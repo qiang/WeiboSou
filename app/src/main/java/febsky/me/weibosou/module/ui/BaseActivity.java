@@ -1,9 +1,14 @@
 package febsky.me.weibosou.module.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import febsky.me.weibosou.App;
@@ -43,7 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
                     "Class must add annotations of ActivityFragmentInitParams.class");
         }
 
-        if (isBindEventBus()) {
+        if (isBindButterKnife()) {
             ButterKnife.bind(this);
         }
     }
@@ -52,8 +57,20 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (isBindEventBus()) {
+        if (isBindButterKnife()) {
             ButterKnife.unbind(this);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        List<Fragment> fragmentList = fragmentManager.getFragments();
+        if (fragmentList != null) {
+            for (Fragment fragment : fragmentList) {
+                fragment.onActivityResult(requestCode, resultCode, data);
+            }
         }
     }
 
@@ -73,11 +90,20 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     /**
+     * 向子类暴漏是不是加载ButterKnife库
+     *
+     * @return
+     */
+    protected boolean isBindButterKnife() {
+        return true;
+    }
+
+    /**
      * 向子类暴漏是不是加载EventBus库
      *
      * @return
      */
     protected boolean isBindEventBus() {
-        return true;
+        return false;
     }
 }

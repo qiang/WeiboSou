@@ -60,9 +60,6 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (isBindEventBus()) {
-            EventBus.getDefault().register(this);
-        }
     }
 
     @Nullable
@@ -77,17 +74,19 @@ public abstract class BaseFragment extends Fragment implements BaseView {
                 throw new RuntimeException(
                         "Class must add annotations of ActivityFragmentInitParams.class");
             }
-            initData();
         }
         return rootView;
     }
 
-    protected abstract void initData();
+    protected abstract void loadData();
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
+        loadData();
+        if (isBindButterKnife()) {
+            ButterKnife.bind(this, view);
+        }
     }
 
     @Override
@@ -109,8 +108,8 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (isBindEventBus()) {
-            EventBus.getDefault().unregister(this);
+        if (isBindButterKnife()) {
+            ButterKnife.unbind(this);
         }
     }
 
@@ -129,11 +128,20 @@ public abstract class BaseFragment extends Fragment implements BaseView {
 
 
     /**
+     * 向子类暴漏是不是加载ButterKnife库
+     *
+     * @return
+     */
+    protected boolean isBindButterKnife() {
+        return true;
+    }
+
+    /**
      * 向子类暴漏是不是加载EventBus库
      *
      * @return
      */
     protected boolean isBindEventBus() {
-        return true;
+        return false;
     }
 }
