@@ -26,7 +26,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import org.greenrobot.eventbus.EventBus;
 
 import butterknife.ButterKnife;
 import febsky.me.weibosou.annotation.InjectContentView;
@@ -46,14 +45,14 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     protected static String LOG_TAG = null;
 
     protected Context mContext;
-    protected Activity mActivity;
+    //protected Activity mActivity;
     protected View rootView;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         LOG_TAG = this.getClass().getSimpleName();
-        this.mActivity = getActivity();
+        //this.mActivity = getActivity();
         this.mContext = getContext();
     }
 
@@ -75,6 +74,9 @@ public abstract class BaseFragment extends Fragment implements BaseView {
                         "Class must add annotations of ActivityFragmentInitParams.class");
             }
         }
+        if (isBindButterKnife()) {
+            ButterKnife.bind(this, rootView);
+        }
         return rootView;
     }
 
@@ -84,9 +86,6 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loadData();
-        if (isBindButterKnife()) {
-            ButterKnife.bind(this, view);
-        }
     }
 
     @Override

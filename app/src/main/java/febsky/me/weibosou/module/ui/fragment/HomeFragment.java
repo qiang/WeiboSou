@@ -1,5 +1,17 @@
 package febsky.me.weibosou.module.ui.fragment;
 
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
 import febsky.me.weibosou.R;
 import febsky.me.weibosou.annotation.InjectContentView;
 import febsky.me.weibosou.module.ui.BaseFragment;
@@ -12,8 +24,76 @@ import febsky.me.weibosou.module.ui.BaseFragment;
 @InjectContentView(R.layout.fragment_home)
 public class HomeFragment extends BaseFragment {
 
+    private List<BaseFragment> mFragmentList;
+    private SectionsPagerAdapter mSectionsPagerAdapter;
+
+
+    @Bind(R.id.tab_layout)
+    TabLayout mTabLayout;
+    @Bind(R.id.view_pager)
+    ViewPager mViewPager;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
+        mFragmentList = new ArrayList<>();
+
+        mFragmentList.add(new GalleryPageFragment());
+        mFragmentList.add(new FollowedPageFragment());
+
+    }
+
     @Override
     protected void loadData() {
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        mTabLayout.setupWithViewPager(mViewPager);//将TabLayout和ViewPager关联起来。
+//        mTabLayout.setTabsFromPagerAdapter(mSectionsPagerAdapter);
+    }
 
+
+    /**
+     * 别问我为啥，我不知道。
+     * http://stackoverflow.com/questions/15207305/getting-the-error-java-lang-illegalstateexception-activity-has-been-destroyed
+     */
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        try {
+            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+            childFragmentManager.setAccessible(true);
+            childFragmentManager.set(this, null);
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+     * one of the sections/tabs/pages.
+     */
+    public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+        public SectionsPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentList.get(position).toString();
+        }
     }
 }

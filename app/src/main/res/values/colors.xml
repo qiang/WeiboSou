@@ -20,4 +20,21 @@
     <color name="line_color">#523E2E</color>
 
 
+    <color name="tab_indicator">#ffffff</color>
+    <color name="tab_background">#ffff467d</color>
+    <color name="tab_text">#ffa5b8</color>
+    <color name="tab_selected_text">#ffffff</color>
+
+
+
+    <!-- 一种近乎白色的灰 -->
+    <color name="gray_ec">#ececec</color>
+    <color name="gray_ce">#cecece</color>
+    <color name="gray_d5">#D5D5D5</color>
+    <color name="gray_ee">#EEEEEE</color>
+    <color name="gray_a0">#a0a0a0</color>
+    <color name="gray_29">#292929</color>
+    <color name="gray_3">#333333</color>
+    <color name="gray_79">#797979</color>
+    <color name="gray_2c">#2c2c2c</color>
 </resources>
