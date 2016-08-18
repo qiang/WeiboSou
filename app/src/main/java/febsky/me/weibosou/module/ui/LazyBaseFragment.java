@@ -55,7 +55,7 @@ public abstract class LazyBaseFragment extends BaseFragment implements BaseView 
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isViewCreated && !isLoadDataCompleted) {
             isLoadDataCompleted = true;
-            lazyLoadData();
+            lazyInitData();
         }
     }
 
@@ -65,7 +65,7 @@ public abstract class LazyBaseFragment extends BaseFragment implements BaseView 
 
         if (getUserVisibleHint()) {
             isLoadDataCompleted = true;
-            lazyLoadData();
+            lazyInitData();
         }
     }
 
@@ -73,10 +73,10 @@ public abstract class LazyBaseFragment extends BaseFragment implements BaseView 
     /**
      * 子类实现加载数据的方法
      */
-    public abstract void lazyLoadData();
+    public abstract void lazyInitData();
 
     @Override
-    protected void loadData() {
+    protected void initData() {
 
     }
 }

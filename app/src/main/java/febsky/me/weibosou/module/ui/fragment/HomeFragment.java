@@ -6,12 +6,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import febsky.me.weibosou.R;
 import febsky.me.weibosou.annotation.InjectContentView;
 import febsky.me.weibosou.module.ui.BaseFragment;
@@ -46,10 +48,15 @@ public class HomeFragment extends BaseFragment {
     }
 
     @Override
-    protected void loadData() {
+    protected void initData() {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);//将TabLayout和ViewPager关联起来。
 //        mTabLayout.setTabsFromPagerAdapter(mSectionsPagerAdapter);
+    }
+
+    @OnClick(R.id.iv_search_btn)
+    public void openSearch() {
+        Toast.makeText(getContext(), "开启搜索界面", Toast.LENGTH_SHORT).show();
     }
 
 

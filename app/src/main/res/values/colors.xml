@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#ffff467d</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
@@ -18,6 +18,8 @@
     <color name="black">#000000</color>
     <color name="red">#E51A18</color>
     <color name="line_color">#523E2E</color>
+    <color name="material_black55">#8c000000</color>
+
 
 
     <color name="tab_indicator">#ffffff</color>

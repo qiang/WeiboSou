@@ -16,7 +16,6 @@
 
 package febsky.me.weibosou.module.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -80,12 +79,15 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         return rootView;
     }
 
-    protected abstract void loadData();
+    /**
+     * fragment 初次加载数据
+     */
+    protected abstract void initData();
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadData();
+        initData();
     }
 
     @Override

@@ -3,6 +3,7 @@ package febsky.me.weibosou.module.ui.fragment;
 import febsky.me.weibosou.R;
 import febsky.me.weibosou.annotation.InjectContentView;
 import febsky.me.weibosou.module.ui.LazyBaseFragment;
+import febsky.me.weibosou.utils.Log;
 
 /**
  * Author: liuqiang
@@ -14,8 +15,8 @@ import febsky.me.weibosou.module.ui.LazyBaseFragment;
 public class FollowedPageFragment extends LazyBaseFragment {
 
     @Override
-    public void lazyLoadData() {
-
+    public void lazyInitData() {
+        Log.i("Q_M:","FollowedPageFragment 加载数据");
     }
 
     @Override

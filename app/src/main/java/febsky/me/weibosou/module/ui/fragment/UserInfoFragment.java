@@ -13,7 +13,7 @@ import febsky.me.weibosou.module.ui.BaseFragment;
 public class UserInfoFragment extends BaseFragment {
 
     @Override
-    protected void loadData() {
+    protected void initData() {
 
     }
 }
