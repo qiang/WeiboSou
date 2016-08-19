@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tab_layout"
-        android:background="@color/gray_ec"
+        android:background="@color/home_fragment_bg_color"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 

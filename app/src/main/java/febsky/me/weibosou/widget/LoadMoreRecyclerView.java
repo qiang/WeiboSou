@@ -29,7 +29,6 @@ public class LoadMoreRecyclerView extends RecyclerView {
 
     private int[] mVisiblePositions;
 
-
     private boolean isLoadingData = false;    //当前是不是正在加载数据
     private boolean isNoMore = false;    //没有更多了
     private boolean loadingMoreEnabled = true;    //是否可以加载更多
@@ -79,6 +78,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
                         && loadingMoreEnabled
                         && !isNoMore
                         ) {
+                    mFootView.setVisibility(VISIBLE);
                     Log.d("TAG:", "加载更多数据");
                     mLoadMoreListener.loadMore();
                     // 之前的状态为非正在加载状态
@@ -184,6 +184,12 @@ public class LoadMoreRecyclerView extends RecyclerView {
                     textView.setTextSize(16);    //这个设置默认是sp
                     textView.setTextColor(Color.parseColor("#727272"));
                     mFootView.addView(textView);
+
+                    mFootView.setPadding(0,
+                            MeasureUtil.dip2px(parent.getContext(), 10.0f),
+                            0,
+                            MeasureUtil.dip2px(parent.getContext(), 10.0f)
+                    );
 
                     mFootView.setVisibility(VISIBLE);
                 }

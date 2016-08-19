@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">#ffff467d</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-
 
     <item name="transparent" type="drawable">#00000000</item>
     <item name="red" type="drawable">#00000000</item>
@@ -12,31 +12,25 @@
     <item name="green" type="drawable">#ff40929C</item>
     <item name="black" type="drawable">#000000</item>
 
-    <color name="black_overlay">#66000000</color>
-    <color name="gray_background">#ffececec</color>
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="red">#E51A18</color>
-    <color name="line_color">#523E2E</color>
-    <color name="material_black55">#8c000000</color>
+    <!-- 底部tab -->
+    <color name="bottom_tab_bg_color">#66000000</color>
 
-
-
+    <!-- 头部tab -->
     <color name="tab_indicator">#ffffff</color>
     <color name="tab_background">#ffff467d</color>
     <color name="tab_text">#ffa5b8</color>
     <color name="tab_selected_text">#ffffff</color>
 
+    <!-- ptr 那个下拉刷新库用到的color -->
+    <color name="ptr_red">#FFC93437</color>
+    <color name="ptr_blue">#FF375BF1</color>
+    <color name="ptr_yellow">#FFF7D23E</color>
+    <color name="ptr_green">#FF34A350</color>
 
 
     <!-- 一种近乎白色的灰 -->
-    <color name="gray_ec">#ececec</color>
-    <color name="gray_ce">#cecece</color>
-    <color name="gray_d5">#D5D5D5</color>
-    <color name="gray_ee">#EEEEEE</color>
-    <color name="gray_a0">#a0a0a0</color>
-    <color name="gray_29">#292929</color>
-    <color name="gray_3">#333333</color>
-    <color name="gray_79">#797979</color>
-    <color name="gray_2c">#2c2c2c</color>
+    <color name="home_fragment_bg_color">#ececec</color>
+
+
+
 </resources>

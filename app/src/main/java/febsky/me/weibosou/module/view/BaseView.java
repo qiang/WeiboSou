@@ -29,12 +29,12 @@ public interface BaseView {
      *
      * @param msg
      */
-    void showLoading(String msg);
+    void showProgress(String msg);
 
     /**
      * hide loading
      */
-    void hideLoading();
+    void hideProgress();
 
     /**
      * show error message  也就是toast
