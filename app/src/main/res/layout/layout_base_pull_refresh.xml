@@ -19,14 +19,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <febsky.me.weibosou.widget.LoadMoreRecyclerView
+        <me.febsky.weibosou.widget.LoadMoreRecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        </febsky.me.weibosou.widget.LoadMoreRecyclerView>
+        </me.febsky.weibosou.widget.LoadMoreRecyclerView>
 
-        <febsky.me.weibosou.widget.ThreePointLoadingView
+        <me.febsky.weibosou.widget.ThreePointLoadingView
             app:pointColor="?attr/pointColor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
