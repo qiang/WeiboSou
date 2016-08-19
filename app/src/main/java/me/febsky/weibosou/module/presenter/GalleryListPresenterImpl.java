@@ -12,7 +12,6 @@ import me.febsky.weibosou.entity.WeiBoUserEntity;
 import me.febsky.weibosou.module.interactor.GalleryListInteractor;
 import me.febsky.weibosou.module.interactor.GalleryListInteractorImpl;
 import me.febsky.weibosou.module.view.GalleryListView;
-import me.febsky.weibosou.utils.Log;
 
 /**
  * Author: liuqiang
@@ -80,7 +79,6 @@ public class GalleryListPresenterImpl extends BasePresenter<GalleryListView, Str
             mView.updateGalleryList(userEntityList,
                     mIsRefresh ? DataLoadType.REFRESH_SUCCESS : DataLoadType.LOAD_MORE_SUCCESS);
 
-            Log.d("Q_M:", userEntityList.size() + "");
         } catch (JSONException e) {
             e.printStackTrace();
         }

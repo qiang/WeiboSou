@@ -73,7 +73,6 @@ public class GalleryPageFragment extends LazyBaseFragment
         refreshLayout.setHeaderView(header);
         refreshLayout.addPtrUIHandler(header);
         refreshLayout.setPtrHandler(this);
-        refreshLayout.autoRefresh(false);
         refreshLayout.postDelayed(new Runnable() {
             @Override
             public void run() {

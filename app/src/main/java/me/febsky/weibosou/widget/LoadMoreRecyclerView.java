@@ -210,7 +210,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
         @Override
         public int getItemCount() {
             if (loadingMoreEnabled) {
-                return adapter.getItemCount() + 1;
+                return adapter.getItemCount() == 0 ? 0 : adapter.getItemCount() + 1;
             } else {
                 return adapter.getItemCount();
             }
