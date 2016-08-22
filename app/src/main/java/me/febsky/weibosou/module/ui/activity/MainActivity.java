@@ -1,6 +1,9 @@
 package me.febsky.weibosou.module.ui.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
 
 import java.util.HashMap;
@@ -30,6 +33,7 @@ public class MainActivity extends BaseActivity implements MainTabView, RadioGrou
     private MainTabPresenter mainTabPresenter;
     private Map<String, BaseFragment> fragmentMap;
     private BaseFragment currentFragment;
+    private FragmentManager fragmentManager;
 
     @Bind(R.id.main_radio_group)
     RadioGroup radioGroup;
@@ -37,6 +41,7 @@ public class MainActivity extends BaseActivity implements MainTabView, RadioGrou
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fragmentManager = getSupportFragmentManager();
         fragmentMap = new HashMap<>();
         mainTabPresenter = new MainTabPresenterImpl(this);
         showHomeFragment();
@@ -49,32 +54,26 @@ public class MainActivity extends BaseActivity implements MainTabView, RadioGrou
 
     @Override
     public void showHomeFragment() {
-        currentFragment = fragmentMap.get("HomeFragment");
-        if (currentFragment == null) {
-            currentFragment = new HomeFragment();
-            fragmentMap.put("HomeFragment", currentFragment);
+        if (fragmentMap.get("HomeFragment") == null) {
+            fragmentMap.put("HomeFragment", new HomeFragment());
         }
-        beginTransaction();
+        switchToFragment(fragmentMap.get("HomeFragment"));
     }
 
     @Override
     public void showCollectionFragment() {
-        currentFragment = fragmentMap.get("CollectionFragment");
-        if (currentFragment == null) {
-            currentFragment = new CollectionFragment();
-            fragmentMap.put("CollectionFragment", currentFragment);
+        if (fragmentMap.get("CollectionFragment") == null) {
+            fragmentMap.put("CollectionFragment", new CollectionFragment());
         }
-        beginTransaction();
+        switchToFragment(fragmentMap.get("CollectionFragment"));
     }
 
     @Override
     public void showUserFragment() {
-        currentFragment = fragmentMap.get("UserInfoFragment");
-        if (currentFragment == null) {
-            currentFragment = new UserInfoFragment();
-            fragmentMap.put("UserInfoFragment", currentFragment);
+        if (fragmentMap.get("UserInfoFragment") == null) {
+            fragmentMap.put("UserInfoFragment", new UserInfoFragment());
         }
-        beginTransaction();
+        switchToFragment(fragmentMap.get("UserInfoFragment"));
     }
 
     @Override
@@ -85,7 +84,22 @@ public class MainActivity extends BaseActivity implements MainTabView, RadioGrou
     /**
      * 辅助完成Fragment的切换
      */
-    private void beginTransaction() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.layout_content, currentFragment).commit();
+    private void switchToFragment(BaseFragment targetFragment) {
+        FragmentTransaction transaction = fragmentManager
+                .beginTransaction();
+        if (currentFragment != null) {
+            transaction
+                    .hide(currentFragment);
+        }
+        if (!targetFragment.isAdded()) {
+            transaction
+                    .add(R.id.layout_content, targetFragment, "" + targetFragment.getClass().getSimpleName())
+                    .commit();
+        } else {
+            transaction
+                    .show(targetFragment)
+                    .commit();
+        }
+        currentFragment = targetFragment;
     }
 }
