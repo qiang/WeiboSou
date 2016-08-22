@@ -53,16 +53,17 @@ public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         //调整ImageView大小
         int picWidth, picHeight;
-        final ViewGroup.LayoutParams params = holder.photoSummary.getLayoutParams();
+        final ViewGroup.LayoutParams params = holder.itemView.getLayoutParams();
         picWidth = MeasureUtil.getScreenSize(mContext).x / 2 - MeasureUtil
                 .dip2px(mContext, 4) * 2 - MeasureUtil.dip2px(mContext, 2);
-        picHeight = (int) (picWidth * (mRandom.nextFloat() / 2 + 1));
+        picHeight = (int) (picWidth * (mRandom.nextFloat() / 4 + 1));
         params.width = picWidth;
         params.height = picHeight;
-        holder.photoSummary.setLayoutParams(params);
+        holder.itemView.setLayoutParams(params);
 
         //在线加载图片
-        Glide.with(mContext).load(userEntities.get(position).getAvatar_large())
+        Glide.with(mContext)
+                .load(userEntities.get(position).getAvatar_large())
                 .asBitmap()
                 .placeholder(R.drawable.icon_placeholder)
                 .error(R.drawable.icon_placeholder)
@@ -70,8 +71,11 @@ public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.photoSummary);
 
-        holder.photoSummaryTv.setText(userEntities.get(position).getScreen_name());
-        //item 出厂动画
+        holder.screenName.setText(userEntities.get(position).getScreen_name());
+//        holder.summaryTv.setText(userEntities.get(position).getDesc1());
+        holder.desc.setText(userEntities.get(position).getDesc2());
+
+        //item 出场动画
         setAnimation(holder.itemView, position);
     }
 
@@ -94,11 +98,13 @@ public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.
     class ViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.home_item_root_view)
-        CardView itmeView;
+        CardView itemView;
         @Bind(R.id.iv_photo_summary)
         ImageView photoSummary;
-        @Bind(R.id.tv_photo_summary)
-        TextView photoSummaryTv;
+        @Bind(R.id.tv_screen_name)
+        TextView screenName;
+        @Bind(R.id.tv_desc)
+        TextView desc;
 
         public ViewHolder(View view) {
             super(view);

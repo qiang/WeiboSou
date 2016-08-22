@@ -5,36 +5,48 @@
     android:id="@+id/home_item_root_view"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="4dp"
-    android:layout_marginLeft="2dp"
-    android:layout_marginRight="2dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="2dp"
-    app:cardElevation="0dp">
+    app:cardElevation="5dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="8dp">
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/iv_photo_summary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginTop="2dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
             android:scaleType="centerCrop"
-            android:transitionName="photos"
+            app:riv_corner_radius="35dp"
             tools:src="@drawable/icon_placeholder" />
 
         <TextView
-            android:id="@+id/tv_photo_summary"
+            android:id="@+id/tv_screen_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:textColor="@color/cv_screen_name_color"
+            android:textSize="16sp"
+            tools:text="最美丽的人" />
+
+        <TextView
+            android:id="@+id/tv_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:textColor="?android:attr/textColorSecondary"
+            android:textSize="12sp"
             tools:text="最美丽的人" />
 
     </LinearLayout>

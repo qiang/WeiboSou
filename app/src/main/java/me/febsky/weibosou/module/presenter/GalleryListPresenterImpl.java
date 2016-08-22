@@ -74,6 +74,8 @@ public class GalleryListPresenterImpl extends BasePresenter<GalleryListView, Str
                 userEntity.setScreen_name(user.getString("screen_name"));
                 userEntity.setAvatar_large(user.getString("avatar_large"));
                 userEntity.setFollowers_count(user.getInt("followers_count"));
+                userEntity.setDesc1(card_group.getJSONObject(i).getString("desc1"));
+                userEntity.setDesc2(card_group.getJSONObject(i).getString("desc2"));
                 userEntityList.add(userEntity);
             }
             mView.updateGalleryList(userEntityList,

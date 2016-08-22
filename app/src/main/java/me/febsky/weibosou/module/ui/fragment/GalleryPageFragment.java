@@ -52,8 +52,8 @@ public class GalleryPageFragment extends LazyBaseFragment
 
         mAdapter = new GalleryListAdapter(data, mContext);
 
-        final StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2,
-                StaggeredGridLayoutManager.VERTICAL);
+        final StaggeredGridLayoutManager layoutManager =
+                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new SpacesItemDecoration(MeasureUtil.dip2px(getActivity(), 4)));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -120,8 +120,12 @@ public class GalleryPageFragment extends LazyBaseFragment
         super.hideProgress();
 
         //如果下拉开着，关了，如果下拉开着关了
-        refreshLayout.refreshComplete();
-        recyclerView.loadMoreComplete();
+        if (refreshLayout != null) {
+            refreshLayout.refreshComplete();
+        }
+        if (recyclerView != null) {
+            recyclerView.loadMoreComplete();
+        }
     }
 
 
