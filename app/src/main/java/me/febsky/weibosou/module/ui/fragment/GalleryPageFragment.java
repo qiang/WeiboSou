@@ -4,27 +4,31 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import in.srain.cube.views.ptr.PtrDefaultHandler;
+import in.srain.cube.views.ptr.PtrFrameLayout;
+import in.srain.cube.views.ptr.PtrHandler;
+import in.srain.cube.views.ptr.header.MaterialHeader;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.adapter.GalleryListAdapter;
 import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.common.DataLoadType;
 import me.febsky.weibosou.entity.WeiBoUserEntity;
+import me.febsky.weibosou.event.RefreshEvent;
 import me.febsky.weibosou.module.presenter.GalleryListPresenter;
 import me.febsky.weibosou.module.presenter.GalleryListPresenterImpl;
 import me.febsky.weibosou.module.ui.LazyBaseFragment;
 import me.febsky.weibosou.module.view.GalleryListView;
-import me.febsky.weibosou.utils.Log;
 import me.febsky.weibosou.utils.MeasureUtil;
 import me.febsky.weibosou.widget.LoadMoreRecyclerView;
 import me.febsky.weibosou.widget.SpacesItemDecoration;
-import in.srain.cube.views.ptr.PtrDefaultHandler;
-import in.srain.cube.views.ptr.PtrFrameLayout;
-import in.srain.cube.views.ptr.PtrHandler;
-import in.srain.cube.views.ptr.header.MaterialHeader;
 
 /**
  * Author: liuqiang
@@ -128,5 +132,19 @@ public class GalleryPageFragment extends LazyBaseFragment
         }
     }
 
+    @Override
+    protected boolean isBindEventBus() {
+        return true;
+    }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onRefreshEvent(RefreshEvent event) {
+//        recyclerView.scrollToPosition(0);
+//        refreshLayout.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                refreshLayout.autoRefresh(false);
+//            }
+//        }, 1);
+    }
 }

@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.ButterKnife;
 import me.febsky.weibosou.annotation.InjectContentView;
@@ -76,6 +77,11 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         if (isBindButterKnife()) {
             ButterKnife.bind(this, rootView);
         }
+
+        if (isBindEventBus()) {
+            EventBus.getDefault().register(this);
+        }
+
         return rootView;
     }
 
@@ -111,6 +117,9 @@ public abstract class BaseFragment extends Fragment implements BaseView {
         super.onDestroy();
         if (isBindButterKnife()) {
             ButterKnife.unbind(this);
+        }
+        if (isBindEventBus()){
+            EventBus.getDefault().unregister(this);
         }
     }
 

@@ -1,13 +1,17 @@
 package me.febsky.weibosou.module.ui.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -17,7 +21,9 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.annotation.InjectContentView;
+import me.febsky.weibosou.event.RefreshEvent;
 import me.febsky.weibosou.module.ui.BaseFragment;
+import me.febsky.weibosou.utils.Log;
 
 /**
  * Author: liuqiang
@@ -53,6 +59,15 @@ public class HomeFragment extends BaseFragment {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mTabLayout.setupWithViewPager(mViewPager);//将TabLayout和ViewPager关联起来。
 //        mTabLayout.setTabsFromPagerAdapter(mSectionsPagerAdapter);
+
+        //我去对内存View分析竟然猜不到
+        ViewGroup tabs = (ViewGroup) mTabLayout.getChildAt(0);
+        tabs.getChildAt(0).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventBus.getDefault().post(new RefreshEvent());
+            }
+        });
     }
 
     @OnClick(R.id.iv_search_btn)
