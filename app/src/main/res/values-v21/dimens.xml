@@ -1,0 +1,3 @@
+<resources>
+    <dimen name="gallery_card_margin">6dp</dimen>
+</resources>
