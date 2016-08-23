@@ -42,13 +42,11 @@ public class LoadMoreRecyclerView extends RecyclerView {
     private final RecyclerView.AdapterDataObserver mDataObserver = new DataObserver();
 
     public LoadMoreRecyclerView(Context context) {
-        super(context);
-        init(context);
+        this(context, null);
     }
 
     public LoadMoreRecyclerView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context);
+        this(context, attrs, 0);
     }
 
     public LoadMoreRecyclerView(Context context, AttributeSet attrs, int defStyle) {
@@ -147,9 +145,45 @@ public class LoadMoreRecyclerView extends RecyclerView {
         void loadMore();
     }
 
+
+    private class DataObserver extends RecyclerView.AdapterDataObserver {
+        @Override
+        public void onChanged() {
+            if (mWrapAdapter != null) {
+                mWrapAdapter.notifyDataSetChanged();
+            }
+        }
+
+        @Override
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            mWrapAdapter.notifyItemRangeInserted(positionStart, itemCount);
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount) {
+            mWrapAdapter.notifyItemRangeChanged(positionStart, itemCount);
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
+            mWrapAdapter.notifyItemRangeChanged(positionStart, itemCount, payload);
+        }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+            mWrapAdapter.notifyItemRangeRemoved(positionStart, itemCount);
+        }
+
+        @Override
+        public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+            mWrapAdapter.notifyItemMoved(fromPosition, toPosition);
+        }
+    }
+
+
     public class WrapAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-        private RecyclerView.Adapter adapter;
+        private RecyclerView.Adapter<ViewHolder> adapter;
 
         public WrapAdapter(RecyclerView.Adapter adapter) {
             this.adapter = adapter;
@@ -230,6 +264,14 @@ public class LoadMoreRecyclerView extends RecyclerView {
         }
 
         @Override
+        public long getItemId(int position) {
+            if (adapter != null) {
+                return adapter.getItemId(position);
+            }
+            return -1;
+        }
+
+        @Override
         public void onAttachedToRecyclerView(RecyclerView recyclerView) {
             super.onAttachedToRecyclerView(recyclerView);
             RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
@@ -298,38 +340,4 @@ public class LoadMoreRecyclerView extends RecyclerView {
         }
     }
 
-
-    private class DataObserver extends RecyclerView.AdapterDataObserver {
-        @Override
-        public void onChanged() {
-            if (mWrapAdapter != null) {
-                mWrapAdapter.notifyDataSetChanged();
-            }
-        }
-
-        @Override
-        public void onItemRangeInserted(int positionStart, int itemCount) {
-            mWrapAdapter.notifyItemRangeInserted(positionStart, itemCount);
-        }
-
-        @Override
-        public void onItemRangeChanged(int positionStart, int itemCount) {
-            mWrapAdapter.notifyItemRangeChanged(positionStart, itemCount);
-        }
-
-        @Override
-        public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
-            mWrapAdapter.notifyItemRangeChanged(positionStart, itemCount, payload);
-        }
-
-        @Override
-        public void onItemRangeRemoved(int positionStart, int itemCount) {
-            mWrapAdapter.notifyItemRangeRemoved(positionStart, itemCount);
-        }
-
-        @Override
-        public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
-            mWrapAdapter.notifyItemMoved(fromPosition, toPosition);
-        }
-    }
 }
