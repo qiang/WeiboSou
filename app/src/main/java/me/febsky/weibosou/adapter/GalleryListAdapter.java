@@ -72,7 +72,6 @@ public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.
                 .into(holder.photoSummary);
 
         holder.screenName.setText(userEntities.get(position).getScreen_name());
-//        holder.summaryTv.setText(userEntities.get(position).getDesc1());
         holder.desc.setText(userEntities.get(position).getDesc2());
 
         //item 出场动画
@@ -97,9 +96,6 @@ public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-
-        @Bind(R.id.home_item_root_view)
-        CardView itemView;
         @Bind(R.id.iv_photo_summary)
         ImageView photoSummary;
         @Bind(R.id.tv_screen_name)
