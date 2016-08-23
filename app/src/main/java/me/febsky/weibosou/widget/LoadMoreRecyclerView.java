@@ -32,7 +32,6 @@ public class LoadMoreRecyclerView extends RecyclerView {
     private boolean isLoadingData = false;    //当前是不是正在加载数据
     private boolean isNoMore = false;    //没有更多了
     private boolean loadingMoreEnabled = true;    //是否可以加载更多
-    public static final int TYPE_ITEM = 10001;
     public static final int TYPE_FOOTER = 10002;
 
     private ViewGroup mFootView;
@@ -182,7 +181,12 @@ public class LoadMoreRecyclerView extends RecyclerView {
         }
     }
 
-
+    /**
+     * Author: liuqiang
+     * Date: 2016-08-23
+     * Time: 16:34
+     * Description: 为上拉加载更多准备的
+     */
     public class WrapAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         private RecyclerView.Adapter<ViewHolder> adapter;

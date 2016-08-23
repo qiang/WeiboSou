@@ -30,12 +30,14 @@ import me.febsky.weibosou.utils.MeasureUtil;
  * Time: 18:28
  * 首页显示用户列表
  */
-public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.ViewHolder> {
+public class GalleryListAdapter extends BaseRecyclerViewAdapter<GalleryListAdapter.ViewHolder> {
 
     private final LayoutInflater mInflater;
     private List<WeiBoUserEntity> userEntities;
     private Context mContext;
     private Random mRandom = new Random();
+
+    private OnItemClickListener mClickListener;
 
     public GalleryListAdapter(List<WeiBoUserEntity> userEntities, Context context) {
         this.userEntities = userEntities;
@@ -46,6 +48,14 @@ public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final ViewHolder holder = new ViewHolder(mInflater.inflate(R.layout.item_photo_gallery, parent, false));
+        if (mClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mClickListener.onItemClick(v, holder.getLayoutPosition());
+                }
+            });
+        }
         return holder;
     }
 
@@ -107,5 +117,21 @@ public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.
             super(view);
             ButterKnife.bind(this, view);
         }
+    }
+
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mClickListener = listener;
+    }
+
+
+    /**
+     * Author: liuqiang
+     * Date: 2016-08-23
+     * Time: 16:32
+     * RecyclerView 的Item点击事件
+     */
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
     }
 }
