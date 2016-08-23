@@ -39,6 +39,8 @@ public class LoadMoreRecyclerView extends RecyclerView {
     private WrapAdapter mWrapAdapter;
     private LayoutInflater mInflater;
 
+    private boolean mUseAnimation = true;   //Item的加载动画，不是原生的RecyclerView 带的是自定义的
+
     private final RecyclerView.AdapterDataObserver mDataObserver = new DataObserver();
 
     public LoadMoreRecyclerView(Context context) {
@@ -310,6 +312,10 @@ public class LoadMoreRecyclerView extends RecyclerView {
         @Override
         public void onViewDetachedFromWindow(RecyclerView.ViewHolder holder) {
             adapter.onViewDetachedFromWindow(holder);
+            if (mUseAnimation && holder.itemView.getAnimation() != null && holder.itemView
+                    .getAnimation().hasStarted()) {
+                holder.itemView.clearAnimation();
+            }
         }
 
         @Override

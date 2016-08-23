@@ -76,6 +76,7 @@ public class GalleryListAdapter extends RecyclerView.Adapter<GalleryListAdapter.
         holder.desc.setText(userEntities.get(position).getDesc2());
 
         //item 出场动画
+        // 注意这个地方一旦启用动画，必须在onViewDetachedFromWindow 销毁掉否则引起难以琢磨的错误
         setAnimation(holder.itemView, position);
     }
 
