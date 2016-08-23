@@ -37,8 +37,6 @@ public class GalleryListAdapter extends BaseRecyclerViewAdapter<GalleryListAdapt
     private Context mContext;
     private Random mRandom = new Random();
 
-    private OnItemClickListener mClickListener;
-
     public GalleryListAdapter(List<WeiBoUserEntity> userEntities, Context context) {
         this.userEntities = userEntities;
         this.mContext = context;
@@ -117,21 +115,5 @@ public class GalleryListAdapter extends BaseRecyclerViewAdapter<GalleryListAdapt
             super(view);
             ButterKnife.bind(this, view);
         }
-    }
-
-
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mClickListener = listener;
-    }
-
-
-    /**
-     * Author: liuqiang
-     * Date: 2016-08-23
-     * Time: 16:32
-     * RecyclerView 的Item点击事件
-     */
-    public interface OnItemClickListener {
-        void onItemClick(View view, int position);
     }
 }
