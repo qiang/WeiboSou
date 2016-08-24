@@ -13,7 +13,7 @@
     <item name="black" type="drawable">#000000</item>
 
     <!-- 底部tab -->
-    <color name="bottom_tab_bg_color">#66000000</color>
+    <color name="bottom_tab_bg_color">#8f8f8f</color>
 
     <!-- 头部tab -->
     <color name="tab_indicator">#ffffff</color>
