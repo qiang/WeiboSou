@@ -10,6 +10,7 @@ public class WeiBoUserEntity extends BaseEntity {
     private int id;   //uid
     private String screen_name;   //貌似是昵称
     private String avatar_large;    //头像
+    private String profile_image_url;  //小图
     private int followers_count;
     private String desc1;
     private String desc2;
@@ -61,5 +62,13 @@ public class WeiBoUserEntity extends BaseEntity {
 
     public void setDesc2(String desc2) {
         this.desc2 = desc2;
+    }
+
+    public String getProfile_image_url() {
+        return profile_image_url;
+    }
+
+    public void setProfile_image_url(String profile_image_url) {
+        this.profile_image_url = profile_image_url;
     }
 }

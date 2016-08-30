@@ -21,18 +21,13 @@ package me.febsky.weibosou.common;
  * Date:    2015/3/9.
  * Description:
  */
-public class ApiConstants {
+public class Api {
 
     public final static String SCHEME_HTTPS = "http://";
     public static final String HOST_NAME = "127.0.0.1";
     public final static String DOMAIN_NAME = SCHEME_HTTPS + HOST_NAME;
 
-    public static final class Urls {
-
-        public static final String DICT_INIT = DOMAIN_NAME + "/dictInit";
-    }
-
-    public static final String getUserList(int page) {
+    public static String requestUserList(int page) {
         return "https://api.weibo.cn/2/guest/cardlist?" +
                 "networktype=wifi&uicode=10000327" +
                 "&moduleID=708&checktoken=c1959aa237ffb163ac351a08bb8d9784" +
@@ -45,6 +40,18 @@ public class ApiConstants {
                 "&gsid=_2AkMg6ZSSf8NhqwJRmP0QzGPgb4l_wgjEieLBAH7sJRM3HRl-3T9jqnUstRUyD-wT6lM3A4HWHM1fFXBWuOYnxg.." +
                 "&lang=zh_CN&page=" + page + "&skin=default&count=20" +
                 "&oldwm=9893_0044&sflag=1&containerid=1087030002_2982_2_50&need_head_cards=0";
+    }
+
+    public static String requestFid(String uid) {
+        return "https://api.weibo.cn/2/profile?" +
+                "networktype=wifi&uicode=10000198" +
+                "&moduleID=708&user_domain=3725773862" +
+                "&featurecode=10000001&c=android" +
+                "&i=1028196&s=38db9ae9&ua=vOPPO-OPPO%20R9m__weibo__6.5.1__android__android5.1" +
+                "&wm=9856_0004&aid=01AokP8l8HVhOYCI_l4MwLv-kMpW0eQU0DkFwcc9b_ZXMdMS0." +
+                "&uid=" + uid +
+                "&v_f=2&v_p=31&from=1065195010" +
+                "&gsid=_2A256rsBsDeRxGeVL61oT-S3LzTiIHXVX-lSkrDV6PUJbrdANLVWgkWoDfmMWkkVTaKvQYLXe0vN9fJiewg..";
     }
 
 }

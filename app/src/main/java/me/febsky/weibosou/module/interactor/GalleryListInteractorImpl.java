@@ -4,7 +4,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
-import me.febsky.weibosou.common.ApiConstants;
+import me.febsky.weibosou.common.Api;
 import me.febsky.weibosou.common.RequestCallback;
 import me.febsky.weibosou.utils.VolleyHelper;
 
@@ -17,7 +17,7 @@ import me.febsky.weibosou.utils.VolleyHelper;
 public class GalleryListInteractorImpl implements GalleryListInteractor<String> {
     @Override
     public void requestGalleryList(final RequestCallback<String> callback, int page) {
-        StringRequest stringRequest = new StringRequest(ApiConstants.getUserList(page),
+        StringRequest stringRequest = new StringRequest(Api.requestUserList(page),
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

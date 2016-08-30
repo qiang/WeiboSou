@@ -1,8 +1,12 @@
 package me.febsky.weibosou.module.ui.fragment;
 
+import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.Toast;
 
 
 import org.greenrobot.eventbus.Subscribe;
@@ -17,6 +21,7 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 import in.srain.cube.views.ptr.header.MaterialHeader;
 import me.febsky.weibosou.R;
+import me.febsky.weibosou.adapter.BaseRecyclerViewAdapter;
 import me.febsky.weibosou.adapter.GalleryListAdapter;
 import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.common.DataLoadType;
@@ -25,6 +30,7 @@ import me.febsky.weibosou.event.RefreshEvent;
 import me.febsky.weibosou.module.presenter.GalleryListPresenter;
 import me.febsky.weibosou.module.presenter.GalleryListPresenterImpl;
 import me.febsky.weibosou.module.ui.LazyBaseFragment;
+import me.febsky.weibosou.module.ui.activity.UserPhotoListActivity;
 import me.febsky.weibosou.module.view.GalleryListView;
 import me.febsky.weibosou.utils.MeasureUtil;
 import me.febsky.weibosou.widget.LoadMoreRecyclerView;
@@ -39,7 +45,7 @@ import me.febsky.weibosou.widget.SpacesItemDecoration;
  */
 @InjectContentView(R.layout.fragment_page_gallery)
 public class GalleryPageFragment extends LazyBaseFragment
-        implements GalleryListView, LoadMoreRecyclerView.OnLoadMoreListener, PtrHandler {
+        implements GalleryListView, LoadMoreRecyclerView.OnLoadMoreListener, PtrHandler, BaseRecyclerViewAdapter.OnItemClickListener {
 
     @Bind(R.id.refresh_layout)
     PtrFrameLayout refreshLayout;
@@ -55,6 +61,7 @@ public class GalleryPageFragment extends LazyBaseFragment
         mPresenter = new GalleryListPresenterImpl(this);
 
         mAdapter = new GalleryListAdapter(data, mContext);
+        mAdapter.setOnItemClickListener(this);
 
         final StaggeredGridLayoutManager layoutManager =
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
@@ -137,14 +144,33 @@ public class GalleryPageFragment extends LazyBaseFragment
         return true;
     }
 
+    /**
+     * 点击刷新效果
+     *
+     * @param event
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRefreshEvent(RefreshEvent event) {
-//        recyclerView.scrollToPosition(0);
-//        refreshLayout.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                refreshLayout.autoRefresh(false);
-//            }
-//        }, 1);
+        if (refreshLayout.isRefreshing()) return;
+        recyclerView.scrollToPosition(0);
+        refreshLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                refreshLayout.autoRefresh(false);
+            }
+        }, 1);
+    }
+
+    //RecyclerView的Item点击事件
+    @Override
+    public void onItemClick(View view, int position) {
+//        startActivity(startIntent);
+
+        Intent intent = new Intent(getActivity(), UserPhotoListActivity.class);
+//        intent.putExtra("photoId", mAdapter.getData().get(position).id);
+        //让新的Activity从一个小的范围扩大到全屏
+        ActivityOptionsCompat options = ActivityOptionsCompat
+                .makeScaleUpAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 0, 0);
+        ActivityCompat.startActivity(getActivity(), intent, options.toBundle());
     }
 }
