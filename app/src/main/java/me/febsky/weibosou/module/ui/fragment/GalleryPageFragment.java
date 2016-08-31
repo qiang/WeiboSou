@@ -6,7 +6,6 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 
 import org.greenrobot.eventbus.Subscribe;
@@ -24,6 +23,7 @@ import me.febsky.weibosou.R;
 import me.febsky.weibosou.adapter.BaseRecyclerViewAdapter;
 import me.febsky.weibosou.adapter.GalleryListAdapter;
 import me.febsky.weibosou.annotation.InjectContentView;
+import me.febsky.weibosou.common.Const;
 import me.febsky.weibosou.common.DataLoadType;
 import me.febsky.weibosou.entity.WeiBoUserEntity;
 import me.febsky.weibosou.event.RefreshEvent;
@@ -108,7 +108,7 @@ public class GalleryPageFragment extends LazyBaseFragment
         mAdapter.notifyDataSetChanged();
     }
 
-    //下拉加载库
+    //上拉加载更多
     @Override
     public void loadMore() {
         mPresenter.loadMoreData();
@@ -152,7 +152,7 @@ public class GalleryPageFragment extends LazyBaseFragment
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onRefreshEvent(RefreshEvent event) {
         if (refreshLayout.isRefreshing()) return;
-        recyclerView.scrollToPosition(0);
+        recyclerView.smoothScrollToPosition(0);
         refreshLayout.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -167,7 +167,7 @@ public class GalleryPageFragment extends LazyBaseFragment
 //        startActivity(startIntent);
 
         Intent intent = new Intent(getActivity(), UserPhotoListActivity.class);
-//        intent.putExtra("photoId", mAdapter.getData().get(position).id);
+        intent.putExtra(Const.USER_ID, data.get(position).getId() + "");
         //让新的Activity从一个小的范围扩大到全屏
         ActivityOptionsCompat options = ActivityOptionsCompat
                 .makeScaleUpAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 0, 0);

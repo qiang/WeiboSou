@@ -12,5 +12,6 @@
 
 
     <dimen name="gallery_card_margin">0dp</dimen>
+    <dimen name="common_title_bar_height">50dp</dimen>
 
 </resources>

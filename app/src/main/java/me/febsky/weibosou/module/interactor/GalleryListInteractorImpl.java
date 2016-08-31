@@ -12,7 +12,7 @@ import me.febsky.weibosou.utils.VolleyHelper;
  * Author: liuqiang
  * Date: 2016-08-18
  * Time: 17:01
- * 首页图片加载
+ * 首页微博用户头像加载
  */
 public class GalleryListInteractorImpl implements GalleryListInteractor<String> {
     @Override
