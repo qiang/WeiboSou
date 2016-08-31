@@ -5,7 +5,12 @@ import android.text.TextUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import me.febsky.weibosou.common.DataLoadType;
 import me.febsky.weibosou.common.RequestCallback;
+import me.febsky.weibosou.entity.UserPhotoEntity;
 import me.febsky.weibosou.module.interactor.UserPhotoListInteractor;
 import me.febsky.weibosou.module.interactor.UserPhotoListInteractorImpl;
 import me.febsky.weibosou.module.view.UserPhotoListView;
@@ -25,8 +30,9 @@ public class UserPhotoListPresenterImpl extends BasePresenter<UserPhotoListView,
 
     private boolean mIsRefresh = false;
 
-
     private UserPhotoListInteractor<String> mInteractor;
+
+    private List<UserPhotoEntity> userPhotoEntities = new ArrayList<>();
 
     public UserPhotoListPresenterImpl(UserPhotoListView view) {
         super(view);
@@ -84,12 +90,30 @@ public class UserPhotoListPresenterImpl extends BasePresenter<UserPhotoListView,
     @Override
     public void loadMoreData() {
         mIsRefresh = false;
+        if (TextUtils.isEmpty(since_id)) {
+            mView.showError("参数错误");
+            return;
+        }
+        mInteractor.loadMoreData(this, uid, fid, since_id);
     }
 
     @Override
     public void requestSuccess(String data) {
+        super.requestComplete();
         //所有的照片数据返回解析
         Log.d("Q_M:", data);
+        //同时要解析出 since_id 为了加载更多
 
+        UserPhotoEntity entity;
+        userPhotoEntities.clear();
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            //把json解析成 UserPhotoEntity 对象
+
+            mView.updatePhotoList(userPhotoEntities,
+                    mIsRefresh ? DataLoadType.REFRESH_SUCCESS : DataLoadType.LOAD_MORE_SUCCESS);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

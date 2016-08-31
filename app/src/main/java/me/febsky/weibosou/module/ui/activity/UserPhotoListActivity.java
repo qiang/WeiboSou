@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
@@ -19,6 +20,7 @@ import me.febsky.weibosou.adapter.BaseRecyclerViewAdapter;
 import me.febsky.weibosou.adapter.UserPhotoListAdapter;
 import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.common.Const;
+import me.febsky.weibosou.common.DataLoadType;
 import me.febsky.weibosou.entity.UserPhotoEntity;
 import me.febsky.weibosou.module.presenter.UserPhotoListPresenter;
 import me.febsky.weibosou.module.presenter.UserPhotoListPresenterImpl;
@@ -118,12 +120,16 @@ public class UserPhotoListActivity extends BaseActivity
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
-
+        mPresenter.refreshData(uid);
     }
 
     @Override
     public void updatePhotoList(List<UserPhotoEntity> photoEntities, int loadType) {
-
+        if (loadType == DataLoadType.REFRESH_SUCCESS) {
+            data.clear();
+        }
+        data.addAll(photoEntities);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -142,5 +148,10 @@ public class UserPhotoListActivity extends BaseActivity
         if (recyclerView != null) {
             recyclerView.loadMoreComplete();
         }
+    }
+
+    @OnClick(R.id.iv_back_btn)
+    void backout() {
+        finish();
     }
 }

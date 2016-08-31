@@ -57,12 +57,11 @@ public class GalleryListPresenterImpl extends BasePresenter<GalleryListView, Str
 
     @Override
     public void requestSuccess(String data) {
-
+        super.requestComplete();
         userEntityList.clear();
 
         WeiBoUserEntity userEntity;
 
-        // Log.d("Q_M:", data);
         try {
             JSONObject jsonObject = new JSONObject(data);
 
@@ -85,6 +84,5 @@ public class GalleryListPresenterImpl extends BasePresenter<GalleryListView, Str
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        mView.hideProgress();
     }
 }

@@ -29,6 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".module.ui.activity.UserPhotoListActivity"></activity>
+        <activity android:name=".module.TestActivity"></activity>
     </application>
 
 </manifest>

@@ -1,30 +1,26 @@
-/*
- * Copyright (c) 2015 [1076559197@qq.com | tchen0707@gmail.com]
- *
- * Licensed under the Apache License, Version 2.0 (the "License”);
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package me.febsky.weibosou.utils;
 
 import android.content.Context;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.reflect.TypeToken;
+
+import me.febsky.weibosou.common.Api;
+import me.febsky.weibosou.common.ApiResponse;
+import me.febsky.weibosou.common.GsonRequest;
+import me.febsky.weibosou.common.RequestCallback;
+import me.febsky.weibosou.entity.UserPhotoEntity;
 
 /**
  * Author:  liuqiang
  * Date:    2015/3/20.
  * Description: 简化volley操作
+ * 本来感觉volley是比较小巧的一个库，后来感觉不太好用
+ * 还不如我之前用自己封装的okhttp呢，
  */
 public class VolleyHelper {
 
@@ -66,6 +62,66 @@ public class VolleyHelper {
         } else {
             throw new IllegalArgumentException("RequestQueue is not initialized.");
         }
+    }
+
+    /**
+     * 用于本项目，因为本项目数据是抓（偷）的别人的不能封装太过
+     *
+     * @param url
+     * @param callback
+     */
+    public static void requestJsonString(String url, final RequestCallback<String> callback) {
+        StringRequest stringRequest = new StringRequest(url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        callback.requestSuccess(response);
+                        callback.requestComplete();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        callback.requestError(error.toString());
+                        callback.requestComplete();
+                    }
+                });
+        stringRequest.setShouldCache(true);
+
+        VolleyHelper.getInstance().getRequestQueue().add(stringRequest);
+    }
+
+    /**
+     * 我的设计的理想化的volley请求，未测试能不能用
+     *
+     * @param tClass
+     * @param url
+     * @param callback
+     * @param <T>
+     */
+    public static <T> void requestJsonBean(Class<T> tClass, String url, final RequestCallback<T> callback) {
+
+        GsonRequest<ApiResponse<T>> gsonRequest = new GsonRequest<>(
+                url, null,
+                new TypeToken<ApiResponse<T>>() {
+                }.getType(),
+                new Response.Listener<ApiResponse<T>>() {
+                    @Override
+                    public void onResponse(ApiResponse<T> response) {
+                        callback.requestSuccess(response.getData());
+                        callback.requestComplete();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        callback.requestError(error.toString());
+                        callback.requestComplete();
+                    }
+                });
+        gsonRequest.setShouldCache(true);
+
+        VolleyHelper.getInstance().getRequestQueue().add(gsonRequest);
     }
 
 }
