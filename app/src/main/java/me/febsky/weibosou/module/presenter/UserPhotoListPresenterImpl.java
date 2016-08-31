@@ -22,7 +22,7 @@ import me.febsky.weibosou.utils.Log;
  * Time: 12:53
  * Description:
  */
-public class UserPhotoListPresenterImpl extends BasePresenter<UserPhotoListView, String> implements UserPhotoListPresenter {
+public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListView, String> implements UserPhotoListPresenter {
 
     private String uid;
     private String fid;

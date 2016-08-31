@@ -20,7 +20,8 @@ import me.febsky.weibosou.module.view.GalleryListView;
  * 这个地方因为抓的微博的包，不能直接封装成对应的Bean对象。
  * 返回String类型的json对象，然后再解析这个对象吧。
  */
-public class GalleryListPresenterImpl extends BasePresenter<GalleryListView, String> implements GalleryListPresenter {
+public class GalleryListPresenterImpl extends BasePresenterImpl<GalleryListView, String>
+        implements GalleryListPresenter {
 
     private int currentPage = 0;
     private boolean mIsRefresh = false;

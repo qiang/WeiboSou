@@ -41,4 +41,5 @@ public interface BaseView {
      */
     void showError(String msg);
 
+    //void setPresenter(T presenter);
 }
