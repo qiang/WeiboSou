@@ -216,8 +216,8 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
         for (int i = 0; i < cards.length(); i++) {
             currentJsonObj = cards.getJSONObject(i);
             switch (currentJsonObj.getInt("card_type")) {
-                case 3:
-                    parsePicsObj(currentJsonObj);
+                case 3:    //这种类型的解析有点麻烦，图片没有大中小只有一张图片
+                    //parsePicsObj(currentJsonObj);
                     break;
                 case 11:
                     parseCards(currentJsonObj.getJSONArray("card_group"));
