@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,8 +34,10 @@ public class LoadMoreRecyclerView extends RecyclerView {
     private boolean isNoMore = false;    //没有更多了
     private boolean loadingMoreEnabled = true;    //是否可以加载更多
     public static final int TYPE_FOOTER = 10002;
+    public static final int TYPE_HEADER = 10001;
 
     private ViewGroup mFootView;
+    private ViewGroup mHeadView;
     private WrapAdapter mWrapAdapter;
     private LayoutInflater mInflater;
 
@@ -64,6 +67,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
         linearLayout.setLayoutParams(rl);
         linearLayout.setGravity(Gravity.CENTER);
         mFootView = linearLayout;
+        mHeadView = new FrameLayout(context);
 
         super.addOnScrollListener(new OnScrollListener() {
             @Override
@@ -197,11 +201,16 @@ public class LoadMoreRecyclerView extends RecyclerView {
 
         public boolean isFooter(int position) {
             if (loadingMoreEnabled) {
-                return position == getItemCount() - 1;
+                return position != 0 && position == getItemCount() - 1;
             } else {
                 return false;
             }
         }
+
+        public boolean isHeader(int position) {
+            return position == 0;
+        }
+
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -234,25 +243,30 @@ public class LoadMoreRecyclerView extends RecyclerView {
                     mFootView.setVisibility(VISIBLE);
                 }
                 return new SimpleViewHolder(mFootView);
+            } else if (viewType == TYPE_HEADER) {
+                return new SimpleViewHolder(mHeadView);
             }
             return adapter.onCreateViewHolder(parent, viewType);
         }
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            if (!isFooter(position)) {
-                adapter.onBindViewHolder(holder, position);
-            } else {
+
+            if (isFooter(position)) {
                 mFootView.setVisibility(VISIBLE);
+            } else if (isHeader(position)) {
+
+            } else {
+                adapter.onBindViewHolder(holder, position - 1);
             }
         }
 
         @Override
         public int getItemCount() {
             if (loadingMoreEnabled) {
-                return adapter.getItemCount() == 0 ? 0 : adapter.getItemCount() + 1;
+                return adapter.getItemCount() == 0 ? 1 : adapter.getItemCount() + 2;
             } else {
-                return adapter.getItemCount();
+                return adapter.getItemCount() + 1;
             }
         }
 
@@ -264,6 +278,8 @@ public class LoadMoreRecyclerView extends RecyclerView {
             }
             if (isFooter(position)) {
                 return TYPE_FOOTER;
+            } else if (isHeader(position)) {
+                return TYPE_HEADER;
             }
 
             return adapter.getItemViewType(position);
@@ -271,8 +287,8 @@ public class LoadMoreRecyclerView extends RecyclerView {
 
         @Override
         public long getItemId(int position) {
-            if (adapter != null) {
-                return adapter.getItemId(position);
+            if (adapter != null && position >= +1) {
+                return adapter.getItemId(position - 1);
             }
             return -1;
         }
@@ -286,7 +302,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
                 gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                     @Override
                     public int getSpanSize(int position) {
-                        return (isFooter(position)) ? gridManager.getSpanCount() : 1;
+                        return (isHeader(position) || isFooter(position)) ? gridManager.getSpanCount() : 1;
                     }
                 });
             }
@@ -305,7 +321,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
             ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
             if (lp != null
                     && lp instanceof StaggeredGridLayoutManager.LayoutParams
-                    && (isFooter(holder.getLayoutPosition()))) {
+                    && (isHeader(holder.getLayoutPosition()) || isFooter(holder.getLayoutPosition()))) {
                 StaggeredGridLayoutManager.LayoutParams p = (StaggeredGridLayoutManager.LayoutParams) lp;
                 p.setFullSpan(true);
             }
@@ -350,4 +366,8 @@ public class LoadMoreRecyclerView extends RecyclerView {
         }
     }
 
+
+    public void addHeader(View header) {
+        this.mHeadView.addView(header);
+    }
 }

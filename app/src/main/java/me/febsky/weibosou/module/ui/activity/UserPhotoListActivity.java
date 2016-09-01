@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,6 +78,12 @@ public class UserPhotoListActivity extends BaseActivity
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView.addItemDecoration(new SpacesItemDecoration(MeasureUtil.dip2px(this, 4)));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(R.drawable.icon_avatar_placeholder);
+
+        recyclerView.addHeader(imageView);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setOnLoadMoreListener(this);
 
