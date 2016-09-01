@@ -20,8 +20,8 @@ public class UserPhotoListInteractorImpl implements UserPhotoListInteractor<Stri
     }
 
     @Override
-    public void loadMoreData(final RequestCallback<String> callback, String fid, String uid, String since_id) {
-        VolleyHelper.requestJsonString(Api.requestUserPhotoMorePage(uid, fid, since_id), callback);
+    public void loadMoreData(final RequestCallback<String> callback, String uid, String fid, String since_id, String lcardid) {
+        VolleyHelper.requestJsonString(Api.requestUserPhotoMorePage(uid, fid, since_id, lcardid), callback);
     }
 
     @Override

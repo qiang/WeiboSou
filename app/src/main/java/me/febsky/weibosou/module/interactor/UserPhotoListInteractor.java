@@ -9,9 +9,10 @@ import me.febsky.weibosou.common.RequestCallback;
  * Description: 微博用户缩略图列表
  */
 public interface UserPhotoListInteractor<T> {
+
     void refreshData(RequestCallback<T> callback, String uid, String fid, String lcardid);
 
-    void loadMoreData(RequestCallback<T> callback, String uid, String fid, String since_id);
+    void loadMoreData(RequestCallback<T> callback, String uid, String fid, String since_id, String lcardid);
 
     void requestFid(RequestCallback<T> callback, String uid, String lcardid);
 }

@@ -46,8 +46,6 @@ import me.febsky.weibosou.widget.SpacesItemDecoration;
 public class UserPhotoListActivity extends BaseActivity
         implements UserPhotoListView, PtrHandler, LoadMoreRecyclerView.OnLoadMoreListener, BaseRecyclerViewAdapter.OnItemClickListener {
 
-    @Bind(R.id.scrollview)
-    GradationScrollView scrollView;
     @Bind(R.id.refresh_layout)
     PtrFrameLayout refreshLayout;
     @Bind(R.id.recycler_view)
@@ -76,7 +74,7 @@ public class UserPhotoListActivity extends BaseActivity
         mAdapter.setOnItemClickListener(this);
 
 
-        recyclerView.setLayoutManager(new MyGridLayoutManager(this, 3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView.addItemDecoration(new SpacesItemDecoration(MeasureUtil.dip2px(this, 4)));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
@@ -120,7 +118,7 @@ public class UserPhotoListActivity extends BaseActivity
     @Override
     public boolean checkCanDoRefresh(PtrFrameLayout frame, View content, View header) {
         // 默认实现，根据实际情况做改动
-        return PtrDefaultHandler.checkContentCanBePulledDown(frame, scrollView, header);
+        return PtrDefaultHandler.checkContentCanBePulledDown(frame, recyclerView, header);
     }
 
     @Override
@@ -161,30 +159,4 @@ public class UserPhotoListActivity extends BaseActivity
     }
 
 
-    /**
-     * 处理嵌套的时候滚动不流畅
-     */
-    public class MyGridLayoutManager extends GridLayoutManager {
-
-        public MyGridLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-            super(context, attrs, defStyleAttr, defStyleRes);
-        }
-
-        public MyGridLayoutManager(Context context, int spanCount) {
-            super(context, spanCount);
-        }
-
-        public MyGridLayoutManager(Context context, int spanCount, int orientation, boolean reverseLayout) {
-            super(context, spanCount, orientation, reverseLayout);
-        }
-
-        public boolean canScrollVertically() {
-            return false;
-        }
-
-        @Override
-        public boolean canScrollHorizontally() {
-            return false;
-        }
-    }
 }

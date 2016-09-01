@@ -20,35 +20,14 @@
         cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
         cube_ptr:ptr_resistance="2.5">
 
-        <me.febsky.weibosou.widget.GradationScrollView
-            android:id="@+id/scrollview"
+
+        <me.febsky.weibosou.widget.LoadMoreRecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none">
+            android:layout_height="match_parent">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:orientation="vertical">
+        </me.febsky.weibosou.widget.LoadMoreRecyclerView>
 
-                <ImageView
-                    android:id="@+id/iv_head_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/icon_avatar_placeholder" />
-
-                <me.febsky.weibosou.widget.LoadMoreRecyclerView
-                    android:id="@+id/recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                </me.febsky.weibosou.widget.LoadMoreRecyclerView>
-
-            </LinearLayout>
-        </me.febsky.weibosou.widget.GradationScrollView>
     </in.srain.cube.views.ptr.PtrFrameLayout>
 
     <include layout="@layout/layout_common_title_bar" />

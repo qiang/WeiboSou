@@ -69,30 +69,35 @@ public class Api {
                 "&ua=OPPO-OPPO%20R9m__weibo__6.9.0__android__android5.1" +
                 "&wm=9847_0002&aid=01AilAKZLB81znjKciZxofmqIMYg52EReWuEaQL7hIDXj6IR4.&did=b87cc255f19b91ff8e202968adab0eb92640d513" +
                 "&fid=" + fid +
-                "&uid=" + uid +
+                "&uid=" + uid +    //这个uid不是这个照片用户的uid
                 "&v_f=2&v_p=34&from=1069095010&gsid=_2AkMgma5of8NhqwJRmP0QzGPgb4l_wgjEieLBAH7sJRM3HRl-3T9jqlYvtRVLv0wphdOwMcXvm9nBFI4vXAS62Q.." +
-                "&lang=zh_CN&lfid=230584&page=1&skin=default&count=20&oldwm=9893_0044&sflag=1" +
+                "&lang=zh_CN" +
+                "&lfid=230584" +
+                "&page=1&skin=default&count=20&oldwm=9893_0044&sflag=1" +
                 "&containerid=" + fid +
                 "&luicode=10000228&need_head_cards=0";
     }
 
-    public static String requestUserPhotoMorePage(String uid, String fid, String since_id) {
-        return "http://api.weibo.cn/2/guest/cardlist?" +
+    public static String requestUserPhotoMorePage(String uid, String fid, String since_id, String lcardid) {
+
+        return "https://api.weibo.cn/2/guest/cardlist?" +
                 "networktype=wifi&uicode=10000198&moduleID=708" +
-                "&checktoken=d9012c0e4aa8a7ab2e8e2b0cab9d8169" +
-                "&lcardid=4013899802264408" +
+                "&checktoken=4051a24622c9ce2dc9f6d6eac66e0414" +
+                "&lcardid=" + lcardid +
                 "&c=android&i=a52f1e4&s=c1108e87" +
                 "&ua=OPPO-OPPO%20R9m__weibo__6.9.0__android__android5.1" +
                 "&wm=9847_0002&aid=01AilAKZLB81znjKciZxofmqIMYg52EReWuEaQL7hIDXj6IR4." +
-                "&did=b87cc255f19b91ff8e202968adab0eb92640d513" +
+                "&did=b87cc255f19b91ff8e202968adab0eb9655879de" +
                 "&fid=" + fid +
-                "&uid=" + uid +
+                "&uid=" + uid +    //这个uid不是这个照片用户的uid
                 "&v_f=2&v_p=34&from=1069095010" +
-                "&gsid=_2AkMgma5of8NhqwJRmP0QzGPgb4l_wgjEieLBAH7sJRM3HRl-3T9jqlYvtRVLv0wphdOwMcXvm9nBFI4vXAS62Q.." +
-                "&lang=zh_CN&lfid=230584&skin=default&count=20&oldwm=9893_0044&sflag=1" +
+                "&gsid=_2AkMgmj9df8NhqwJRmP0QzGPgb4l_wgjEieLBAH7sJRM3HRl-3T9kqmwFtRUGcYGOhZ32ozb7A5YdbeytwvBaMA.." +
+                "&lang=zh_CN" +
+                "&lfid=1087030002_2982_2_50" +
+                "&skin=default&count=20&oldwm=9893_0044&sflag=1" +
                 "&containerid=" + fid +
                 "&since_id=" + since_id +
-                "&luicode=10000228&need_head_cards=0";
+                "&luicode=10000327&need_head_cards=0";
     }
 
 }
