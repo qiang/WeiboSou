@@ -105,14 +105,17 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
     public void requestSuccess(String data) {
         super.requestComplete();
         //所有的照片数据返回解析
-//        Log.d("Q_M:", data);
         userPhotoEntities.clear();
         try {
-            if (mIsRefresh) {
-                parseFirstPageData(data);
-            } else {
-                parseMorePageData(data);
-            }
+            JSONObject jsonObject = new JSONObject(data);
+            //把json解析成 UserPhotoEntity 对象
+            //同时要解析出 since_id 为了加载更多
+            since_id = jsonObject.getJSONObject("cardlistInfo").getString("since_id");
+
+            JSONArray cards = jsonObject.getJSONArray("cards");
+
+            parseCards(cards);
+
             mView.updatePhotoList(userPhotoEntities,
                     mIsRefresh ? DataLoadType.REFRESH_SUCCESS : DataLoadType.LOAD_MORE_SUCCESS);
         } catch (JSONException e) {
@@ -200,8 +203,36 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
         }
     }
 
+
     /**
-     * {card_type:47,pics[]}
+     * 主要做的是解析的分发
+     *
+     * @param cards
+     * @throws JSONException
+     */
+    private void parseCards(JSONArray cards) throws JSONException {
+
+        JSONObject currentJsonObj;
+        for (int i = 0; i < cards.length(); i++) {
+            currentJsonObj = cards.getJSONObject(i);
+            switch (currentJsonObj.getInt("card_type")) {
+                case 3:
+                    parsePicsObj(currentJsonObj);
+                    break;
+                case 11:
+                    parseCards(currentJsonObj.getJSONArray("card_group"));
+                    break;
+                case 47:
+                    parsePicsObj(currentJsonObj);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    /**
+     * {card_type:47,pics[]}中的pics数组
      *
      * @param picsParent
      */
