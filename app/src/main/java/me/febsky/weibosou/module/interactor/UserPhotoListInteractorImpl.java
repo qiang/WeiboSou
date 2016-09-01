@@ -13,9 +13,9 @@ import me.febsky.weibosou.utils.VolleyHelper;
 public class UserPhotoListInteractorImpl implements UserPhotoListInteractor<String> {
 
     @Override
-    public void refreshData(final RequestCallback<String> callback, String uid, String fid) {
+    public void refreshData(final RequestCallback<String> callback, String uid, String fid, String lcardid) {
         VolleyHelper.requestJsonString(
-                Api.requestUserPhotoFistPage(uid, fid),
+                Api.requestUserPhotoFistPage(uid, fid, lcardid),
                 callback);
     }
 
@@ -25,9 +25,9 @@ public class UserPhotoListInteractorImpl implements UserPhotoListInteractor<Stri
     }
 
     @Override
-    public void requestFid(final RequestCallback<String> callback, String uid) {   //Api.requestFid(uid)
+    public void requestFid(final RequestCallback<String> callback, String uid, String lcardid) {   //Api.requestFid(uid)
         VolleyHelper.requestJsonString(
-                Api.requestFid(uid),
+                Api.requestFid(uid, lcardid),
                 callback);
     }
 }

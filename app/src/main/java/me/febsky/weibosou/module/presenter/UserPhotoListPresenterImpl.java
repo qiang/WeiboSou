@@ -2,6 +2,7 @@ package me.febsky.weibosou.module.presenter;
 
 import android.text.TextUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +28,7 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
     private String uid;
     private String fid;
     private String since_id;
+    private String lcardid;
 
     private boolean mIsRefresh = false;
 
@@ -40,12 +42,13 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
     }
 
     @Override
-    public void refreshData(final String uid) {
+    public void refreshData(final String uid, final String lcardid) {
         if (TextUtils.isEmpty(uid)) {
             mView.showError("请求参数错误");
             return;
         }
         this.uid = uid;
+        this.lcardid = lcardid;
         mIsRefresh = true;
         if (TextUtils.isEmpty(fid)) {
             mInteractor.requestFid(new RequestCallback<String>() {
@@ -75,15 +78,15 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
 
                         fid = albumJsonObj.getString("containerid");
 
-                        refreshData(uid);
+                        refreshData(uid, lcardid);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-            }, uid);
+            }, uid, lcardid);
         } else {
-            mInteractor.refreshData(this, uid, fid);
+            mInteractor.refreshData(this, uid, fid, lcardid);
         }
     }
 
@@ -109,6 +112,39 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
         try {
             JSONObject jsonObject = new JSONObject(data);
             //把json解析成 UserPhotoEntity 对象
+            since_id = jsonObject.getJSONObject("cardlistInfo").getString("since_id");
+
+            JSONArray cards = jsonObject.getJSONArray("cards");
+            Log.d("Q_M:", "cards.length==" + cards.length());
+            if (cards.length() >= 2) {
+                JSONArray card_group = cards.getJSONObject(cards.length() - 1).getJSONArray("card_group");
+                Log.d("Q_M:", "card_group.length==" + card_group.length());
+                for (int i = 0; i < card_group.length(); i++) {
+                    JSONObject groupObj = card_group.getJSONObject(i);
+                    JSONArray picsArr = groupObj.getJSONArray("pics");    //每个pics中有三个pic
+                    if (picsArr != null) {
+                        for (int j = 0; j < picsArr.length(); j++) {
+                            entity = new UserPhotoEntity();
+
+                            JSONObject picObj = picsArr.getJSONObject(j);
+                            String pic_small = picObj.getString("pic_small");
+                            String pic_big = picObj.getString("pic_big");
+                            String pic_middle = picObj.getString("pic_middle");
+
+                            if (picObj.has("pic_id")) {    //这个东西有可能没有
+                                String pic_id = picObj.getString("pic_id");
+                                entity.setPic_id(pic_id);
+                            }
+
+                            entity.setPic_big(pic_big);
+                            entity.setPic_small(pic_small);
+                            entity.setPic_middle(pic_middle);
+                            userPhotoEntities.add(entity);
+//                            Log.d("Q_M:", "pic_id=>" + pic_id);
+                        }
+                    }
+                }
+            }
 
             mView.updatePhotoList(userPhotoEntities,
                     mIsRefresh ? DataLoadType.REFRESH_SUCCESS : DataLoadType.LOAD_MORE_SUCCESS);

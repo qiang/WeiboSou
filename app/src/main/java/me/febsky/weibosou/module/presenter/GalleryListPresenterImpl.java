@@ -70,13 +70,14 @@ public class GalleryListPresenterImpl extends BasePresenterImpl<GalleryListView,
             for (int i = 0; i < card_group.length(); i++) {
                 JSONObject user = card_group.getJSONObject(i).getJSONObject("user");
                 userEntity = new WeiBoUserEntity();
-                userEntity.setId(user.getInt("id"));
+                userEntity.setId(user.getLong("id"));
                 userEntity.setScreen_name(user.getString("screen_name"));
                 userEntity.setAvatar_large(user.getString("avatar_large"));
                 userEntity.setProfile_image_url(user.getString("profile_image_url"));
                 userEntity.setFollowers_count(user.getInt("followers_count"));
                 userEntity.setDesc1(card_group.getJSONObject(i).getString("desc1"));
                 userEntity.setDesc2(card_group.getJSONObject(i).getString("desc2"));
+                userEntity.setLcardid(card_group.getJSONObject(i).getString("itemid"));
                 userEntityList.add(userEntity);
             }
             mView.updateGalleryList(userEntityList,

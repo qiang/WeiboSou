@@ -1,9 +1,12 @@
 package me.febsky.weibosou.module.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.AttributeSet;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -22,10 +25,12 @@ import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.common.Const;
 import me.febsky.weibosou.common.DataLoadType;
 import me.febsky.weibosou.entity.UserPhotoEntity;
+import me.febsky.weibosou.entity.WeiBoUserEntity;
 import me.febsky.weibosou.module.presenter.UserPhotoListPresenter;
 import me.febsky.weibosou.module.presenter.UserPhotoListPresenterImpl;
 import me.febsky.weibosou.module.ui.BaseActivity;
 import me.febsky.weibosou.module.view.UserPhotoListView;
+import me.febsky.weibosou.utils.Log;
 import me.febsky.weibosou.utils.MeasureUtil;
 import me.febsky.weibosou.widget.GradationScrollView;
 import me.febsky.weibosou.widget.LoadMoreRecyclerView;
@@ -52,7 +57,7 @@ public class UserPhotoListActivity extends BaseActivity
     private List<UserPhotoEntity> data = new ArrayList<>();
     private UserPhotoListAdapter mAdapter;
     private UserPhotoListPresenter mPresenter;
-    private String uid;
+    private WeiBoUserEntity userEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +65,8 @@ public class UserPhotoListActivity extends BaseActivity
 
         Intent requestIntent = getIntent();
         if (requestIntent != null) {
-            uid = requestIntent.getStringExtra(Const.USER_ID);
+            userEntity = (WeiBoUserEntity) requestIntent.getSerializableExtra(Const.USER_ENTITY);
+            Log.d("Q_M:", "userEntity " + userEntity.toString());
         }
 
         mPresenter = new UserPhotoListPresenterImpl(this);
@@ -69,9 +75,8 @@ public class UserPhotoListActivity extends BaseActivity
         mAdapter = new UserPhotoListAdapter(data, mContext);
         mAdapter.setOnItemClickListener(this);
 
-        final StaggeredGridLayoutManager layoutManager =
-                new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.setLayoutManager(new MyGridLayoutManager(this, 3));
         recyclerView.addItemDecoration(new SpacesItemDecoration(MeasureUtil.dip2px(this, 4)));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
@@ -120,7 +125,7 @@ public class UserPhotoListActivity extends BaseActivity
 
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
-        mPresenter.refreshData(uid);
+        mPresenter.refreshData(userEntity.getId() + "", userEntity.getLcardid());
     }
 
     @Override
@@ -153,5 +158,33 @@ public class UserPhotoListActivity extends BaseActivity
     @OnClick(R.id.iv_back_btn)
     void backout() {
         finish();
+    }
+
+
+    /**
+     * 处理嵌套的时候滚动不流畅
+     */
+    public class MyGridLayoutManager extends GridLayoutManager {
+
+        public MyGridLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+            super(context, attrs, defStyleAttr, defStyleRes);
+        }
+
+        public MyGridLayoutManager(Context context, int spanCount) {
+            super(context, spanCount);
+        }
+
+        public MyGridLayoutManager(Context context, int spanCount, int orientation, boolean reverseLayout) {
+            super(context, spanCount, orientation, reverseLayout);
+        }
+
+        public boolean canScrollVertically() {
+            return false;
+        }
+
+        @Override
+        public boolean canScrollHorizontally() {
+            return false;
+        }
     }
 }

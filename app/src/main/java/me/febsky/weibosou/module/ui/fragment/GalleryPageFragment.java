@@ -167,7 +167,7 @@ public class GalleryPageFragment extends LazyBaseFragment
 //        startActivity(startIntent);
 
         Intent intent = new Intent(getActivity(), UserPhotoListActivity.class);
-        intent.putExtra(Const.USER_ID, data.get(position).getId() + "");
+        intent.putExtra(Const.USER_ENTITY, data.get(position));
         //让新的Activity从一个小的范围扩大到全屏
         ActivityOptionsCompat options = ActivityOptionsCompat
                 .makeScaleUpAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 0, 0);

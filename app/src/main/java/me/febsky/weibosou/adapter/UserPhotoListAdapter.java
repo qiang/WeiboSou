@@ -9,13 +9,17 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import java.util.List;
-import java.util.Random;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.entity.UserPhotoEntity;
+import me.febsky.weibosou.utils.Log;
 import me.febsky.weibosou.utils.MeasureUtil;
 
 /**
@@ -29,7 +33,6 @@ public class UserPhotoListAdapter extends BaseRecyclerViewAdapter<UserPhotoListA
     private final LayoutInflater mInflater;
     private List<UserPhotoEntity> userPhotoEntities;
     private Context mContext;
-    private Random mRandom = new Random();
 
     public UserPhotoListAdapter(List<UserPhotoEntity> userPhotoEntities, Context context) {
         this.userPhotoEntities = userPhotoEntities;
@@ -53,19 +56,16 @@ public class UserPhotoListAdapter extends BaseRecyclerViewAdapter<UserPhotoListA
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        //调整ImageView大小
-        int picWidth, picHeight;
-        final ViewGroup.LayoutParams params = holder.photo.getLayoutParams();
-        picWidth = MeasureUtil.getScreenSize(mContext).x / 2 - MeasureUtil
-                .dip2px(mContext, 4) * 2 - MeasureUtil.dip2px(mContext, 2);
-        picHeight = (int) (picWidth * (mRandom.nextFloat() / 2 + 1));
-        params.width = picWidth;
-        params.height = picHeight;
-        holder.photo.setLayoutParams(params);
 
-        //item 出场动画
-        // 注意这个地方一旦启用动画，必须在onViewDetachedFromWindow 销毁掉否则引起难以琢磨的错误
-        setAnimation(holder.itemView, position);
+        //在线加载图片
+        Glide.with(mContext)
+                .load(userPhotoEntities.get(position).getPic_middle())
+                .asBitmap()
+                .placeholder(R.drawable.icon_avatar_placeholder)    //头像占位符
+                .error(R.drawable.icon_avatar_placeholder)
+                .format(DecodeFormat.PREFER_ARGB_8888)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.photo);
     }
 
     @Override

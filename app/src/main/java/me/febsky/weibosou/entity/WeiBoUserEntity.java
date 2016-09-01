@@ -7,7 +7,7 @@ package me.febsky.weibosou.entity;
  */
 public class WeiBoUserEntity extends BaseEntity {
 
-    private int id;   //uid
+    private long id;   //uid
     private String screen_name;   //貌似是昵称
     private String avatar_large;    //头像
     private String profile_image_url;  //小图
@@ -15,12 +15,14 @@ public class WeiBoUserEntity extends BaseEntity {
     private String desc1;
     private String desc2;
 
+    private String lcardid;
 
-    public int getId() {
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -70,5 +72,27 @@ public class WeiBoUserEntity extends BaseEntity {
 
     public void setProfile_image_url(String profile_image_url) {
         this.profile_image_url = profile_image_url;
+    }
+
+    public String getLcardid() {
+        return lcardid;
+    }
+
+    public void setLcardid(String lcardid) {
+        this.lcardid = lcardid;
+    }
+
+    @Override
+    public String toString() {
+        return "WeiBoUserEntity{" +
+                "id=" + id +
+                ", screen_name='" + screen_name + '\'' +
+                ", avatar_large='" + avatar_large + '\'' +
+                ", profile_image_url='" + profile_image_url + '\'' +
+                ", followers_count=" + followers_count +
+                ", desc1='" + desc1 + '\'' +
+                ", desc2='" + desc2 + '\'' +
+                ", lcardid='" + lcardid + '\'' +
+                '}';
     }
 }

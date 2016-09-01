@@ -8,7 +8,7 @@ package me.febsky.weibosou.module.presenter;
  */
 public interface UserPhotoListPresenter {
 
-    void refreshData(String uid);
+    void refreshData(String uid,String lcardid);
 
     void loadMoreData();
 }

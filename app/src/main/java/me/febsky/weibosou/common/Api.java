@@ -35,7 +35,8 @@ public class Api {
                 "&c=android&i=a52f1e4&s=c1108e87" +
                 "&ua=OPPO-OPPO%20R9m__weibo__6.8.2__android__android5.1" +
                 "&wm=9847_0002&aid=01AilAKZLB81znjKciZxofmqIMYg52EReWuEaQL7hIDXj6IR4." +
-                "&did=b87cc255f19b91ff8e202968adab0eb9fc159a2e&uid=1005508234880" +
+                "&did=b87cc255f19b91ff8e202968adab0eb9fc159a2e&" +
+//                "uid=1005508234880" +
                 "&v_f=2&v_p=33" +
                 "&from=1068295010" +
                 "&gsid=_2AkMg6ZSSf8NhqwJRmP0QzGPgb4l_wgjEieLBAH7sJRM3HRl-3T9jqnUstRUyD-wT6lM3A4HWHM1fFXBWuOYnxg.." +
@@ -43,29 +44,28 @@ public class Api {
                 "&oldwm=9893_0044&sflag=1&containerid=1087030002_2982_2_50&need_head_cards=0";
     }
 
-    public static String requestFid(String uid) {
-        return "http://api.weibo.cn/2/profile?" +
+    public static String requestFid(String uid, String lcardid) {
+        return "https://api.weibo.cn/2/profile?" +
                 "networktype=wifi&uicode=10000198&moduleID=708" +
                 "&user_domain=" + uid +
-//                "&checktoken=d9012c0e4aa8a7ab2e8e2b0cab9d8169" +
-                "&lcardid=4013903199307220&c=android&i=a52f1e4&s=c1108e87" +
-                "&ua=OPPO-OPPO%20R9m__weibo__6.9.0__android__android5.1" +
-                "&wm=9847_0002&aid=01AilAKZLB81znjKciZxofmqIMYg52EReWuEaQL7hIDXj6IR4." +
-                "&did=b87cc255f19b91ff8e202968adab0eb92640d513" +
-                "&uid=3283836867" + uid +
+                "&checktoken=88edb7a834ea975602a5c959ce596148" +
+                "&lcardid=" + lcardid +
+                "&c=android&i=a52f1e4&s=c1108e87" +
+                "&ua=OPPO-OPPO%20R9m__weibo__6.9.0__android__android5.1&wm=9847_0002" +
+                "&aid=01AilAKZLB81znjKciZxofmqIMYg52EReWuEaQL7hIDXj6IR4.&did=b87cc255f19b91ff8e202968adab0eb9c6ca4538" +
+                "&uid=" + uid +
                 "&v_f=2&v_p=34&from=1069095010" +
-                "&gsid=_2AkMgma5of8NhqwJRmP0QzGPgb4l_wgjEieLBAH7sJRM3HRl-3T9jqlYvtRVLv0wphdOwMcXvm9nBFI4vXAS62Q.." +
-                "&lang=zh_CN&lfid=230584" +
-                //"&nick=%E5%8C%97%E7%94%B5%E4%B8%AD%E6%88%8F%E7%9A%84%E7%BE%8E%E5%A5%B3%E4%BB%AC" +
-                "&skin=default&oldwm=9893_0044&sflag=1&cover_width=1080&profile_entry_key=1&luicode=10000228";
+                "&gsid=_2AkMgmj9df8NhqwJRmP0QzGPgb4l_wgjEieLBAH7sJRM3HRl-3T9kqmwFtRUGcYGOhZ32ozb7A5YdbeytwvBaMA.." +
+                "&lang=zh_CN&lfid=1087030002_2982_2_50&skin=default&oldwm=9893_0044&sflag=1&cover_width=1080&luicode=10000327";
     }
 
 
-    public static String requestUserPhotoFistPage(String uid, String fid) {
+    public static String requestUserPhotoFistPage(String uid, String fid, String lcardid) {
         return "http://api.weibo.cn/2/guest/cardlist?" +
                 "networktype=wifi&uicode=10000198&moduleID=708" +
                 "&checktoken=d9012c0e4aa8a7ab2e8e2b0cab9d8169" +
-                "&lcardid=4013899802264408&c=android&i=a52f1e4&s=c1108e87" +
+                "&lcardid=" + lcardid +
+                "&c=android&i=a52f1e4&s=c1108e87" +
                 "&ua=OPPO-OPPO%20R9m__weibo__6.9.0__android__android5.1" +
                 "&wm=9847_0002&aid=01AilAKZLB81znjKciZxofmqIMYg52EReWuEaQL7hIDXj6IR4.&did=b87cc255f19b91ff8e202968adab0eb92640d513" +
                 "&fid=" + fid +
@@ -80,7 +80,8 @@ public class Api {
         return "http://api.weibo.cn/2/guest/cardlist?" +
                 "networktype=wifi&uicode=10000198&moduleID=708" +
                 "&checktoken=d9012c0e4aa8a7ab2e8e2b0cab9d8169" +
-                "&lcardid=4013899802264408&c=android&i=a52f1e4&s=c1108e87" +
+                "&lcardid=4013899802264408" +
+                "&c=android&i=a52f1e4&s=c1108e87" +
                 "&ua=OPPO-OPPO%20R9m__weibo__6.9.0__android__android5.1" +
                 "&wm=9847_0002&aid=01AilAKZLB81znjKciZxofmqIMYg52EReWuEaQL7hIDXj6IR4." +
                 "&did=b87cc255f19b91ff8e202968adab0eb92640d513" +
