@@ -28,8 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.ui.activity.UserPhotoListActivity"></activity>
-        <activity android:name=".module.TestActivity"></activity>
+        <activity android:name=".module.ui.activity.UserPhotoListActivity" />
+        <activity android:name=".module.TestActivity" />
+        <activity android:name=".module.ui.activity.UserSearchActivity"></activity>
     </application>
 
 </manifest>

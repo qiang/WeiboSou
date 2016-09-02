@@ -1,5 +1,6 @@
 package me.febsky.weibosou.module.ui.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -23,6 +24,7 @@ import me.febsky.weibosou.R;
 import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.event.RefreshEvent;
 import me.febsky.weibosou.module.ui.BaseFragment;
+import me.febsky.weibosou.module.ui.activity.UserSearchActivity;
 import me.febsky.weibosou.utils.Log;
 
 /**
@@ -72,7 +74,7 @@ public class HomeFragment extends BaseFragment {
 
     @OnClick(R.id.iv_search_btn)
     public void openSearch() {
-        Toast.makeText(getContext(), "开启搜索界面", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(mContext, UserSearchActivity.class));
     }
 
 

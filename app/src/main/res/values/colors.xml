@@ -3,15 +3,12 @@
 
     <color name="colorPrimary">#ff467d</color>
     <color name="colorPrimaryDark">#ff467d</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ffa5b8</color>
 
+    <!-- drawable -->
     <item name="transparent" type="drawable">#00000000</item>
-    <item name="red" type="drawable">#00000000</item>
-    <item name="yellow" type="drawable">#ffff9000</item>
-    <item name="green" type="drawable">#ff40929C</item>
-    <item name="black" type="drawable">#000000</item>
 
-    <color name="transparent" >#00000000</color>
+    <color name="transparent">#00000000</color>
     <color name="white">#ffffffff</color>
     <!-- 底部tab -->
     <color name="bottom_tab_bg_color">#8f8f8f</color>
@@ -32,7 +29,9 @@
     <!-- 一种近乎白色的灰 -->
     <color name="home_fragment_bg_color">#ececec</color>
 
-
     <color name="cv_screen_name_color">#f46200</color>
+
+    <color name="font_hint_color">#ececec</color>
+
 
 </resources>

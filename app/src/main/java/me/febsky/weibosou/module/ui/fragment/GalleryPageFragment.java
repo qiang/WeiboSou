@@ -166,9 +166,6 @@ public class GalleryPageFragment extends LazyBaseFragment
     @Override
     public void onItemClick(View view, int position) {
 //        startActivity(startIntent);
-
-        Toast.makeText(GalleryPageFragment.this.mContext, "+++" + mAdapter.getItemId(position), Toast.LENGTH_SHORT).show();
-
         Intent intent = new Intent(getActivity(), UserPhotoListActivity.class);
         intent.putExtra(Const.USER_ENTITY, data.get(position));
         //让新的Activity从一个小的范围扩大到全屏
