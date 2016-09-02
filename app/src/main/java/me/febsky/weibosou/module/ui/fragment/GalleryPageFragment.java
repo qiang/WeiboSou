@@ -6,6 +6,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.Toast;
 
 
 import org.greenrobot.eventbus.Subscribe;
@@ -45,7 +46,7 @@ import me.febsky.weibosou.widget.SpacesItemDecoration;
  */
 @InjectContentView(R.layout.fragment_page_gallery)
 public class GalleryPageFragment extends LazyBaseFragment
-        implements GalleryListView, LoadMoreRecyclerView.OnLoadMoreListener, PtrHandler, BaseRecyclerViewAdapter.OnItemClickListener {
+        implements GalleryListView, LoadMoreRecyclerView.OnLoadMoreListener, PtrHandler, LoadMoreRecyclerView.OnItemClickListener {
 
     @Bind(R.id.refresh_layout)
     PtrFrameLayout refreshLayout;
@@ -61,7 +62,6 @@ public class GalleryPageFragment extends LazyBaseFragment
         mPresenter = new GalleryListPresenterImpl(this);
 
         mAdapter = new GalleryListAdapter(data, mContext);
-        mAdapter.setOnItemClickListener(this);
 
         final StaggeredGridLayoutManager layoutManager =
                 new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
@@ -70,6 +70,7 @@ public class GalleryPageFragment extends LazyBaseFragment
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
         recyclerView.setOnLoadMoreListener(this);
+        recyclerView.setOnItemClickListener(this);
 
         final MaterialHeader header = new MaterialHeader(getContext());
         int[] colors = getResources().getIntArray(R.array.google_colors);
@@ -165,6 +166,8 @@ public class GalleryPageFragment extends LazyBaseFragment
     @Override
     public void onItemClick(View view, int position) {
 //        startActivity(startIntent);
+
+        Toast.makeText(GalleryPageFragment.this.mContext, "+++" + mAdapter.getItemId(position), Toast.LENGTH_SHORT).show();
 
         Intent intent = new Intent(getActivity(), UserPhotoListActivity.class);
         intent.putExtra(Const.USER_ENTITY, data.get(position));

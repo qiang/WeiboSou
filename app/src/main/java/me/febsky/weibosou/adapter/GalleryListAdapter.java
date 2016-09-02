@@ -46,14 +46,6 @@ public class GalleryListAdapter extends BaseRecyclerViewAdapter<GalleryListAdapt
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final ViewHolder holder = new ViewHolder(mInflater.inflate(R.layout.item_photo_gallery, parent, false));
-        if (mClickListener != null) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mClickListener.onItemClick(v, holder.getLayoutPosition());
-                }
-            });
-        }
         return holder;
     }
 

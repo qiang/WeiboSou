@@ -19,8 +19,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.entity.UserPhotoEntity;
-import me.febsky.weibosou.utils.Log;
-import me.febsky.weibosou.utils.MeasureUtil;
 
 /**
  * Author: liuqiang
@@ -43,14 +41,6 @@ public class UserPhotoListAdapter extends BaseRecyclerViewAdapter<UserPhotoListA
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final ViewHolder holder = new ViewHolder(mInflater.inflate(R.layout.item_user_photos, parent, false));
-        if (mClickListener != null) {
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mClickListener.onItemClick(v, holder.getLayoutPosition());
-                }
-            });
-        }
         return holder;
     }
 

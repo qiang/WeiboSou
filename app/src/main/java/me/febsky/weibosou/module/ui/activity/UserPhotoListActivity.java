@@ -1,14 +1,12 @@
 package me.febsky.weibosou.module.ui.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,6 @@ import me.febsky.weibosou.module.ui.BaseActivity;
 import me.febsky.weibosou.module.view.UserPhotoListView;
 import me.febsky.weibosou.utils.Log;
 import me.febsky.weibosou.utils.MeasureUtil;
-import me.febsky.weibosou.widget.GradationScrollView;
 import me.febsky.weibosou.widget.LoadMoreRecyclerView;
 import me.febsky.weibosou.widget.SpacesItemDecoration;
 
@@ -45,12 +42,14 @@ import me.febsky.weibosou.widget.SpacesItemDecoration;
  */
 @InjectContentView(R.layout.activity_user_photo_list)
 public class UserPhotoListActivity extends BaseActivity
-        implements UserPhotoListView, PtrHandler, LoadMoreRecyclerView.OnLoadMoreListener, BaseRecyclerViewAdapter.OnItemClickListener {
+        implements UserPhotoListView, PtrHandler, LoadMoreRecyclerView.OnLoadMoreListener, LoadMoreRecyclerView.OnItemClickListener {
 
     @Bind(R.id.refresh_layout)
     PtrFrameLayout refreshLayout;
     @Bind(R.id.recycler_view)
     LoadMoreRecyclerView recyclerView;
+    @Bind(R.id.tv_title)
+    TextView titleView;
 
 
     private List<UserPhotoEntity> data = new ArrayList<>();
@@ -66,18 +65,19 @@ public class UserPhotoListActivity extends BaseActivity
         if (requestIntent != null) {
             userEntity = (WeiBoUserEntity) requestIntent.getSerializableExtra(Const.USER_ENTITY);
             Log.d("Q_M:", "userEntity " + userEntity.toString());
+            titleView.setText(userEntity.getScreen_name() + "的美图");
         }
 
         mPresenter = new UserPhotoListPresenterImpl(this);
 //        mPresenter.refreshData(uid);
 
         mAdapter = new UserPhotoListAdapter(data, mContext);
-        mAdapter.setOnItemClickListener(this);
 
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerView.addItemDecoration(new SpacesItemDecoration(MeasureUtil.dip2px(this, 4)));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setOnItemClickListener(this);
 
 
         ImageView imageView = new ImageView(this);

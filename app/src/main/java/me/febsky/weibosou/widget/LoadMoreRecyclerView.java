@@ -246,7 +246,18 @@ public class LoadMoreRecyclerView extends RecyclerView {
             } else if (viewType == TYPE_HEADER) {
                 return new SimpleViewHolder(mHeadView);
             }
-            return adapter.onCreateViewHolder(parent, viewType);
+
+            //一种点击事件的实现方式，以为有个头所以要减一
+            final ViewHolder viewHolder = adapter.onCreateViewHolder(parent, viewType);
+            if (mClickListener != null) {
+                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mClickListener.onItemClick(v, viewHolder.getLayoutPosition() - 1);
+                    }
+                });
+            }
+            return viewHolder;
         }
 
         @Override
@@ -369,5 +380,22 @@ public class LoadMoreRecyclerView extends RecyclerView {
 
     public void addHeader(View header) {
         this.mHeadView.addView(header);
+    }
+
+
+    protected OnItemClickListener mClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mClickListener = listener;
+    }
+
+    /**
+     * Author: liuqiang
+     * Date: 2016-08-23
+     * Time: 16:32
+     * RecyclerView 的Item点击事件
+     */
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
     }
 }
