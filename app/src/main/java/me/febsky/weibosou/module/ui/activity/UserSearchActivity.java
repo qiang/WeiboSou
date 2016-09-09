@@ -2,6 +2,7 @@ package me.febsky.weibosou.module.ui.activity;
 
 import android.os.Bundle;
 
+import butterknife.OnClick;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.module.ui.BaseActivity;
@@ -15,4 +16,9 @@ public class UserSearchActivity extends BaseActivity {
     }
 
 
+
+    @OnClick(R.id.iv_back_btn)
+    void backout() {
+        finish();
+    }
 }

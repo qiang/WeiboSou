@@ -99,6 +99,8 @@
 #-libraryjars   libs/*.jar   #缺省proguard 会检查每一个引用是否正确，但是第三方库里面往往有些不会用到的类，没有正确引用。如果不配置的话，系统就会报错。
 -dontwarn android.support.v4.**
 -dontwarn android.os.**
+-dontwarn android.support.**
+
 
 ##############################--------以上是Android基本配置----------##############################
 
@@ -143,15 +145,30 @@
 -keep class com.makeramen.** { *; }
 -dontwarn com.makeramen.**
 
-# FaceBook 的图片加载库
--dontwarn com.facebook.**
+# Butterknife
+-keep class butterknife.** { *; }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewBinder { *; }
 
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep public enum com.bumptech.glide.load.resource.bitmap.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
 }
--keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
+}
+
+#EventBus
+-keepattributes *Annotation*
+-keepclassmembers class ** {
+    @org.greenrobot.eventbus.Subscribe <methods>;
+}
+-keep enum org.greenrobot.eventbus.ThreadMode { *; }
+
+# Only required if you use AsyncExecutor
+-keepclassmembers class * extends org.greenrobot.eventbus.util.ThrowableFailureEvent {
+    <init>(java.lang.Throwable);
+}
 
 #Glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
@@ -159,4 +176,13 @@
   **[] $VALUES;
   public *;
 }
--keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+
+-keep class com.google.common.collect.** { *; }
+-dontwarn com.google.common.collect.**
+
+-keep class com.google.common.util.concurrent.**{*;}
+-dontwarn  com.google.common.util.concurrent.**
+
+-dontwarn  com.google.common.**

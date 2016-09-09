@@ -26,5 +26,5 @@
         android:gravity="center_vertical|left"
         tools:text="我是标题"
         android:textColor="@color/white"
-        android:textSize="16sp" />
+        android:textSize="@dimen/title_bar_text_size" />
 </RelativeLayout>
