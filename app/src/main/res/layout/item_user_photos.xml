@@ -2,6 +2,7 @@
 <me.febsky.weibosou.widget.SquareRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="2dp">
 
     <ImageView
@@ -10,5 +11,5 @@
         android:layout_height="match_parent"
         android:contentDescription="@null"
         android:scaleType="centerCrop"
-        android:src="@drawable/icon_avatar_placeholder" />
+        tools:src="@drawable/icon_avatar_placeholder" />
 </me.febsky.weibosou.widget.SquareRelativeLayout>

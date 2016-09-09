@@ -51,7 +51,7 @@ public class UserPhotoListAdapter extends BaseRecyclerViewAdapter<UserPhotoListA
         Glide.with(mContext)
                 .load(userPhotoEntities.get(position).getPic_middle())
                 .asBitmap()
-//                .placeholder(R.drawable.icon_avatar_placeholder)    //头像占位符
+                .placeholder(R.drawable.gray_placeholder)    //占位符
 //                .error(R.drawable.icon_avatar_placeholder)
                 .format(DecodeFormat.PREFER_ARGB_8888)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)

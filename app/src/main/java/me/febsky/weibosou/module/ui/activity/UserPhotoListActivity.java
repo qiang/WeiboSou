@@ -2,6 +2,8 @@ package me.febsky.weibosou.module.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
@@ -18,7 +20,6 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 import in.srain.cube.views.ptr.header.MaterialHeader;
 import me.febsky.weibosou.R;
-import me.febsky.weibosou.adapter.BaseRecyclerViewAdapter;
 import me.febsky.weibosou.adapter.UserPhotoListAdapter;
 import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.common.Const;
@@ -144,7 +145,12 @@ public class UserPhotoListActivity extends BaseActivity
 
     @Override
     public void onItemClick(View view, int position) {
-
+        Intent intent = new Intent(this, PhotoDetailActivity.class);
+        mApplication.reference.USER_PHOTO_ENTITY = data;
+        intent.putExtra(Const.VIEWPAGER_CURRENT_POSITION, position);
+        ActivityOptionsCompat options = ActivityOptionsCompat
+                .makeScaleUpAnimation(view, view.getWidth() / 2, view.getHeight() / 2, 0, 0);
+        ActivityCompat.startActivity(this, intent, options.toBundle());
     }
 
     @Override
@@ -164,6 +170,4 @@ public class UserPhotoListActivity extends BaseActivity
     void backout() {
         finish();
     }
-
-
 }

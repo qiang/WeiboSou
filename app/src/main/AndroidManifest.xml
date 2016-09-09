@@ -30,7 +30,8 @@
         </activity>
         <activity android:name=".module.ui.activity.UserPhotoListActivity" />
         <activity android:name=".module.TestActivity" />
-        <activity android:name=".module.ui.activity.UserSearchActivity"></activity>
+        <activity android:name=".module.ui.activity.UserSearchActivity" />
+        <activity android:name=".module.ui.activity.PhotoDetailActivity"></activity>
     </application>
 
 </manifest>
