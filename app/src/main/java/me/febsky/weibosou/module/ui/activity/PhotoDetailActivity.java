@@ -36,7 +36,7 @@ public class PhotoDetailActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         currentPosition = getIntent().getIntExtra(Const.VIEWPAGER_CURRENT_POSITION, 0);
         mPresenter = new UserPhotoDetailPresenterImpl(this);
-        titleView.setText("" + (currentPosition + 1) + "/" + Const.VIEWPAGER_CURRENT_POSITION.length());
+        titleView.setText("" + (currentPosition + 1) + "/" + mApplication.reference.USER_PHOTO_ENTITY.size());
     }
 
     @Override
@@ -60,7 +60,7 @@ public class PhotoDetailActivity extends BaseActivity
 
     @Override
     public void onPageSelected(int position) {
-        titleView.setText("" + (position + 1) + "/" + Const.VIEWPAGER_CURRENT_POSITION.length());
+        titleView.setText("" + (position + 1) + "/" + mApplication.reference.USER_PHOTO_ENTITY.size());
 
     }
 

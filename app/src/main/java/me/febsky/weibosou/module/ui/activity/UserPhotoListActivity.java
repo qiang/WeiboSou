@@ -132,6 +132,7 @@ public class UserPhotoListActivity extends BaseActivity
     @Override
     public void onRefreshBegin(PtrFrameLayout frame) {
         mPresenter.refreshData(userEntity.getId() + "", userEntity.getLcardid());
+        recyclerView.setLoadingMoreEnabled(true);
     }
 
     @Override
@@ -141,6 +142,15 @@ public class UserPhotoListActivity extends BaseActivity
         }
         data.addAll(photoEntities);
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showNoneData() {
+        if (recyclerView != null) {
+            recyclerView.loadMoreComplete();
+            //设置不可上拉
+            recyclerView.setLoadingMoreEnabled(false);
+        }
     }
 
     @Override

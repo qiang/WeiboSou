@@ -97,6 +97,9 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
         if (TextUtils.isEmpty(since_id)) {
             mView.showError("参数错误");
             return;
+        } else if ("0".equals(since_id)) {    //如果为0  表示没有后续数据了
+            mView.showNoneData();
+            return;
         }
         mInteractor.loadMoreData(this, uid, fid, since_id, lcardid);
     }

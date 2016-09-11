@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test</string>
+    <!--<string name="app_name">Test</string>-->
 
     <string name="bottom_tab_home_page">看图</string>
     <string name="bottom_tab_collection">收藏</string>

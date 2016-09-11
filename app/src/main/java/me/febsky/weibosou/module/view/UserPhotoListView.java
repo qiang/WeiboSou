@@ -17,4 +17,9 @@ public interface UserPhotoListView extends BaseView {
      * @param loadType      //加载的状态，是刷新还是加载更多，成功没有
      */
     void updatePhotoList(List<UserPhotoEntity> photoEntities, int loadType);
+
+    /**
+     * 没有更多数据了
+     */
+    void showNoneData();
 }
