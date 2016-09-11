@@ -48,4 +48,12 @@
             android:src="@drawable/icon_search" />
     </RelativeLayout>
 
+    <me.febsky.weibosou.widget.LoadMoreRecyclerView
+        android:id="@+id/load_more_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_common_title_bar">
+
+    </me.febsky.weibosou.widget.LoadMoreRecyclerView>
+
 </RelativeLayout>

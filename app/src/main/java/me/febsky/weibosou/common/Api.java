@@ -16,6 +16,9 @@
 
 package me.febsky.weibosou.common;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 /**
  * Author:  liuqiang
  * Date:    2015/3/9.
@@ -98,6 +101,36 @@ public class Api {
                 "&containerid=" + fid +
                 "&since_id=" + since_id +
                 "&luicode=10000327&need_head_cards=0";
+    }
+
+
+    /**
+     * @param keyword 搜索关键字
+     * @param page    当前页数
+     * @return
+     */
+    public static String requestSearchPage(String keyword, int page) {
+        String fid = "100303type=3&q=" + keyword + "&t=0";
+        try {
+            fid = URLEncoder.encode(fid, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return "https://api.weibo.cn/2/guest/cardlist?" +
+                "networktype=wifi&uicode=10000003&moduleID=708" +
+                "&checktoken=91c375d01f72f2d5f9d584e167c4b55b" +
+                "&featurecode=10000085&c=android&i=a52f1e4&s=c1108e87" +
+                "&ua=OPPO-OPPO%20R9m__weibo__6.9.1__android__android5.1" +
+                "&wm=9847_0002&aid=01AilAKZLB81znjKciZxofmqIMYg52EReWuEaQL7hIDXj6IR4." +
+                "&did=b87cc255f19b91ff8e202968adab0eb947582531&" +
+                "fid=" + fid +//
+                "&uid=1005508234880&v_f=2&v_p=35&from=1069195010" +
+                "&gsid=_2AkMgiF7Tf8NhqwJRmP0QzGPgb4l_wgjEieLBAH7sJRM3HRl-3T9jqnRStRVfc18OG95HeQFMPdzK0L3CZAfaSg.." +
+                "&lang=zh_CN&lfid=230584" +
+                "&page=" + page +
+                "&skin=default&count=20&oldwm=9893_0044&sflag=1" +
+                "&containerid=" + fid +
+                "&luicode=10000228&container_ext=nettype%3Awifi&need_head_cards=1";
     }
 
 }
