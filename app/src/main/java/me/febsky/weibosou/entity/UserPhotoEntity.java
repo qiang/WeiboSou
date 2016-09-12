@@ -39,6 +39,8 @@ public class UserPhotoEntity extends BaseEntity {
     }
 
     public String getPic_middle() {
+        if (pic_middle == null || "".equals(pic_middle))
+            return pic_small;
         return pic_middle;
     }
 

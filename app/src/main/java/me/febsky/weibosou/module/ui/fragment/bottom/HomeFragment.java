@@ -1,4 +1,4 @@
-package me.febsky.weibosou.module.ui.fragment;
+package me.febsky.weibosou.module.ui.fragment.bottom;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +25,8 @@ import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.event.RefreshEvent;
 import me.febsky.weibosou.module.ui.BaseFragment;
 import me.febsky.weibosou.module.ui.activity.UserSearchActivity;
+import me.febsky.weibosou.module.ui.fragment.FollowedPageFragment;
+import me.febsky.weibosou.module.ui.fragment.GalleryPageFragment;
 import me.febsky.weibosou.utils.Log;
 
 /**

@@ -30,6 +30,10 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
      */
     protected int mContentViewId;
 
+    /**
+     * 当前activity是否可见
+     */
+    protected boolean isVisible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,17 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isVisible = true;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isVisible = false;
+    }
 
     @Override
     protected void onDestroy() {

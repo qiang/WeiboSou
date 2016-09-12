@@ -30,6 +30,8 @@ public class SearchPresenterImpl extends BasePresenterImpl<SearchView, String>
 
     private List<WeiBoUserEntity> userEntities = new ArrayList<>();
 
+    private String keyword = "";
+
     public SearchPresenterImpl(SearchView view) {
         super(view);
         mInteractor = new SearchInteractorImpl();
@@ -37,8 +39,16 @@ public class SearchPresenterImpl extends BasePresenterImpl<SearchView, String>
 
     @Override
     public void loadMoreData(String keyword) {
-        Log.d("Q_M:", "loadMoreData");
-        mIsRefresh = false;
+        keyword = keyword.trim();
+        if (keyword.equals(this.keyword)) {
+            mIsRefresh = false;
+        } else {
+            page = 1;
+            mIsRefresh = true;
+        }
+        this.keyword = keyword;
+        Log.d("Q_M:", "keyword-->" + keyword);
+        Log.d("Q_M:", "loadMoreData-->" + mIsRefresh);
         mInteractor.loadMoreData(this, keyword, page++);
     }
 

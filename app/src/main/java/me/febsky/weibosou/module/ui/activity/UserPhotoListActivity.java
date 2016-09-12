@@ -137,6 +137,12 @@ public class UserPhotoListActivity extends BaseActivity
 
     @Override
     public void updatePhotoList(List<UserPhotoEntity> photoEntities, int loadType) {
+
+        //如果当前activity 不在可视化界面上，丢弃数据
+        if (!isVisible) {
+            return;
+        }
+
         if (loadType == DataLoadType.REFRESH_SUCCESS) {
             data.clear();
         }

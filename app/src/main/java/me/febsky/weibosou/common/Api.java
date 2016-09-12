@@ -26,15 +26,13 @@ import java.net.URLEncoder;
  */
 public class Api {
 
-    public final static String SCHEME_HTTPS = "http://";
-    public static final String HOST_NAME = "127.0.0.1";
-    public final static String DOMAIN_NAME = SCHEME_HTTPS + HOST_NAME;
+    public static final String CHECK_TOKEN = "91c375d01f72f2d5f9d584e167c4b55b";
 
     public static String requestUserList(int page) {
         return "https://api.weibo.cn/2/guest/cardlist?" +
                 "networktype=wifi&uicode=10000327" +
                 "&moduleID=708" +
-                "&checktoken=c1959aa237ffb163ac351a08bb8d9784" +
+                "&checktoken=" + CHECK_TOKEN +
                 "&c=android&i=a52f1e4&s=c1108e87" +
                 "&ua=OPPO-OPPO%20R9m__weibo__6.8.2__android__android5.1" +
                 "&wm=9847_0002&aid=01AilAKZLB81znjKciZxofmqIMYg52EReWuEaQL7hIDXj6IR4." +
@@ -51,7 +49,7 @@ public class Api {
         return "https://api.weibo.cn/2/profile?" +
                 "networktype=wifi&uicode=10000198&moduleID=708" +
                 "&user_domain=" + uid +
-                "&checktoken=88edb7a834ea975602a5c959ce596148" +
+                "&checktoken=" + CHECK_TOKEN +
                 "&lcardid=" + lcardid +
                 "&c=android&i=a52f1e4&s=c1108e87" +
                 "&ua=OPPO-OPPO%20R9m__weibo__6.9.0__android__android5.1&wm=9847_0002" +
@@ -66,7 +64,7 @@ public class Api {
     public static String requestUserPhotoFistPage(String uid, String fid, String lcardid) {
         return "http://api.weibo.cn/2/guest/cardlist?" +
                 "networktype=wifi&uicode=10000198&moduleID=708" +
-                "&checktoken=d9012c0e4aa8a7ab2e8e2b0cab9d8169" +
+                "&checktoken=" + CHECK_TOKEN +
                 "&lcardid=" + lcardid +
                 "&c=android&i=a52f1e4&s=c1108e87" +
                 "&ua=OPPO-OPPO%20R9m__weibo__6.9.0__android__android5.1" +
@@ -85,7 +83,7 @@ public class Api {
 
         return "https://api.weibo.cn/2/guest/cardlist?" +
                 "networktype=wifi&uicode=10000198&moduleID=708" +
-                "&checktoken=4051a24622c9ce2dc9f6d6eac66e0414" +
+                "&checktoken=" + CHECK_TOKEN +
                 "&lcardid=" + lcardid +
                 "&c=android&i=a52f1e4&s=c1108e87" +
                 "&ua=OPPO-OPPO%20R9m__weibo__6.9.0__android__android5.1" +
@@ -118,7 +116,7 @@ public class Api {
         }
         return "https://api.weibo.cn/2/guest/cardlist?" +
                 "networktype=wifi&uicode=10000003&moduleID=708" +
-                "&checktoken=91c375d01f72f2d5f9d584e167c4b55b" +
+                "&checktoken=" + CHECK_TOKEN +
                 "&featurecode=10000085&c=android&i=a52f1e4&s=c1108e87" +
                 "&ua=OPPO-OPPO%20R9m__weibo__6.9.1__android__android5.1" +
                 "&wm=9847_0002&aid=01AilAKZLB81znjKciZxofmqIMYg52EReWuEaQL7hIDXj6IR4." +

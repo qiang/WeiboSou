@@ -1,4 +1,4 @@
-package me.febsky.weibosou.module.ui.fragment;
+package me.febsky.weibosou.module.ui.fragment.bottom;
 
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.annotation.InjectContentView;
@@ -9,8 +9,8 @@ import me.febsky.weibosou.module.ui.BaseFragment;
  * Date: 2016-08-16
  * Time: 14:55
  */
-@InjectContentView(R.layout.fragment_collection)
-public class CollectionFragment extends BaseFragment {
+@InjectContentView(R.layout.fragment_user)
+public class UserInfoFragment extends BaseFragment {
 
     @Override
     protected void initData() {

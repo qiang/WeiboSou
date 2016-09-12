@@ -1,7 +1,6 @@
 package me.febsky.weibosou.module.ui.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.RadioGroup;
@@ -16,10 +15,12 @@ import me.febsky.weibosou.module.presenter.MainTabPresenter;
 import me.febsky.weibosou.module.presenter.MainTabPresenterImpl;
 import me.febsky.weibosou.module.ui.BaseActivity;
 import me.febsky.weibosou.module.ui.BaseFragment;
-import me.febsky.weibosou.module.ui.fragment.CollectionFragment;
-import me.febsky.weibosou.module.ui.fragment.HomeFragment;
-import me.febsky.weibosou.module.ui.fragment.UserInfoFragment;
+import me.febsky.weibosou.module.ui.fragment.bottom.CollectionFragment;
+import me.febsky.weibosou.module.ui.fragment.bottom.HomeFragment;
+import me.febsky.weibosou.module.ui.fragment.bottom.UserInfoFragment;
 import me.febsky.weibosou.module.view.MainTabView;
+import me.febsky.weibosou.utils.ActivityUtil;
+import me.febsky.weibosou.utils.Log;
 
 /**
  * Author: liuqiang
@@ -46,6 +47,7 @@ public class MainActivity extends BaseActivity implements MainTabView, RadioGrou
         mainTabPresenter = new MainTabPresenterImpl(this);
         showHomeFragment();
         initEvent();
+
     }
 
     private void initEvent() {

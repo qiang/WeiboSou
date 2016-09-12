@@ -228,6 +228,9 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
                 case 47:
                     parsePicsObj(currentJsonObj);
                     break;
+                case 35:
+                    parsePicsObj(currentJsonObj);
+                    break;
                 default:
                     break;
             }
@@ -249,16 +252,18 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
                 JSONObject picObj = picsArr.getJSONObject(j);
                 String pic_small = picObj.getString("pic_small");
                 String pic_big = picObj.getString("pic_big");
-                String pic_middle = picObj.getString("pic_middle");
 
                 if (picObj.has("pic_id")) {    //这个东西有可能没有
                     String pic_id = picObj.getString("pic_id");
                     entity.setPic_id(pic_id);
                 }
+                if (picObj.has("pic_middle")) {
+                    String pic_middle = picObj.getString("pic_middle");
+                    entity.setPic_middle(pic_middle);
+                }
 
                 entity.setPic_big(pic_big);
                 entity.setPic_small(pic_small);
-                entity.setPic_middle(pic_middle);
                 userPhotoEntities.add(entity);
             }
         }
