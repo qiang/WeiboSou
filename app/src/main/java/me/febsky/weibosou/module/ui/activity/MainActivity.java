@@ -42,6 +42,11 @@ public class MainActivity extends BaseActivity implements MainTabView, RadioGrou
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!isTaskRoot()) {
+            finish();
+            return;
+        }
+
         fragmentManager = getSupportFragmentManager();
         fragmentMap = new HashMap<>();
         mainTabPresenter = new MainTabPresenterImpl(this);

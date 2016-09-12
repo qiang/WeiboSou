@@ -26,7 +26,8 @@ import java.net.URLEncoder;
  */
 public class Api {
 
-    public static final String CHECK_TOKEN = "91c375d01f72f2d5f9d584e167c4b55b";
+    //00c6b670f5585dfce086ce136393f121
+    public static final String CHECK_TOKEN = "";
 
     public static String requestUserList(int page) {
         return "https://api.weibo.cn/2/guest/cardlist?" +
