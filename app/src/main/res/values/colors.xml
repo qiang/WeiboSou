@@ -30,10 +30,14 @@
 
     <!-- 一种近乎白色的灰 -->
     <color name="home_fragment_bg_color">#ececec</color>
-
     <color name="cv_screen_name_color">#f46200</color>
-
     <color name="font_hint_color">#ececec</color>
+
+    <color name="gray_f2">#f2f2f2</color>
+    <color name="gray_aa">#aaaaaa</color>
+    <color name="gray_78">#787878</color>
+    <color name="gray_f4">#f4f4f4</color>
+    <color name="gray_d3">#d3d3d3</color>
 
 
 </resources>

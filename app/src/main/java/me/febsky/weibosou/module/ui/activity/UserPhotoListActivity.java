@@ -81,10 +81,10 @@ public class UserPhotoListActivity extends BaseActivity
         recyclerView.setOnItemClickListener(this);
 
 
-        ImageView imageView = new ImageView(this);
-        imageView.setImageResource(R.drawable.icon_avatar_placeholder);
-
-        recyclerView.addHeader(imageView);
+//        ImageView imageView = new ImageView(this);
+//        imageView.setImageResource(R.drawable.icon_avatar_placeholder);
+//
+//        recyclerView.addHeader(imageView);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setOnLoadMoreListener(this);
 

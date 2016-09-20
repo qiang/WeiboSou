@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 
 
 import java.util.List;
@@ -15,6 +17,7 @@ import butterknife.ButterKnife;
 import me.febsky.weibosou.App;
 import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.module.view.BaseView;
+import me.febsky.weibosou.widget.LoadingDialog;
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
 
@@ -35,6 +38,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
      */
     protected boolean isVisible = false;
 
+    protected LoadingDialog mDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
         mContext = getApplicationContext();
         mApplication = (App) mContext;
+        mDialog = new LoadingDialog(this);
 
         if (getClass().isAnnotationPresent(InjectContentView.class)) {
             InjectContentView annotation = getClass()
@@ -56,6 +62,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         if (isBindButterKnife()) {
             ButterKnife.bind(this);
         }
+
     }
 
     @Override
@@ -144,5 +151,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
      */
     protected boolean isBindEventBus() {
         return false;
+    }
+
+
+    protected void hideSoftInput(EditText view) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0); //强制隐藏键盘
     }
 }

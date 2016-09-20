@@ -2,13 +2,12 @@ package me.febsky.weibosou.module.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,6 @@ import me.febsky.weibosou.module.presenter.SearchPresenter;
 import me.febsky.weibosou.module.presenter.SearchPresenterImpl;
 import me.febsky.weibosou.module.ui.BaseActivity;
 import me.febsky.weibosou.module.view.SearchView;
-import me.febsky.weibosou.utils.Log;
 import me.febsky.weibosou.utils.MeasureUtil;
 import me.febsky.weibosou.widget.LoadMoreRecyclerView;
 import me.febsky.weibosou.widget.SpacesItemDecoration;
@@ -70,9 +68,13 @@ public class UserSearchActivity extends BaseActivity
 
     @OnClick(R.id.iv_search_btn)
     void search() {
-        if (TextUtils.isEmpty(inputText.getText()))
+        if (TextUtils.isEmpty(inputText.getText())) {
+            Toast.makeText(UserSearchActivity.this, "搜索数据不能为空", Toast.LENGTH_SHORT).show();
             return;
+        }
+        mDialog.show();
         mPresenter.loadMoreData(inputText.getText() + "");
+        hideSoftInput(inputText);
     }
 
     @Override
@@ -109,6 +111,6 @@ public class UserSearchActivity extends BaseActivity
     public void hideProgress() {
         super.hideProgress();
         //如果下拉开着，关了，如果下拉开着关了
-
+        mDialog.dismiss();
     }
 }
