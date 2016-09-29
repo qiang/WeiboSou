@@ -27,6 +27,7 @@ import me.febsky.weibosou.module.ui.BaseFragment;
 import me.febsky.weibosou.module.ui.activity.UserSearchActivity;
 import me.febsky.weibosou.module.ui.fragment.FollowedPageFragment;
 import me.febsky.weibosou.module.ui.fragment.GalleryPageFragment;
+import me.febsky.weibosou.module.ui.fragment.GirlsFragment;
 import me.febsky.weibosou.utils.Log;
 
 /**
@@ -54,7 +55,7 @@ public class HomeFragment extends BaseFragment {
         mFragmentList = new ArrayList<>();
 
         mFragmentList.add(new GalleryPageFragment());
-        mFragmentList.add(new FollowedPageFragment());
+        mFragmentList.add(new GirlsFragment());
 
     }
 

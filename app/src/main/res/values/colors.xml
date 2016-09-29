@@ -10,6 +10,9 @@
 
     <color name="transparent">#00000000</color>
     <color name="white">#ffffffff</color>
+    <color name="white_ff">#ffffff</color>
+    <color name="alpha_10_white">#1AFFFFFF</color>
+    <color name="alpha_90_white">#E6FFFFFF</color>
     <color name="material_black">#000</color>
     <color name="gray_placeholder">#efefef</color>
     <!-- 底部tab -->

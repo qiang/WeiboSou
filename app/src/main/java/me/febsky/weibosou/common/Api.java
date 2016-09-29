@@ -132,4 +132,8 @@ public class Api {
                 "&luicode=10000228&container_ext=nettype%3Awifi&need_head_cards=1";
     }
 
+
+    //网易新闻客户端美女
+    //http://c.m.163.com/recommend/getChanRecomNews?channel=T1456112189138&size=20
+
 }

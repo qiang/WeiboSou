@@ -2,6 +2,7 @@ package me.febsky.weibosou.module.ui.activity;
 
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import butterknife.Bind;
@@ -15,7 +16,12 @@ import me.febsky.weibosou.module.ui.BaseActivity;
 import me.febsky.weibosou.module.view.UserPhotoDetailView;
 import me.febsky.weibosou.widget.ThreePointLoadingView;
 
-
+/**
+ * Author: liuqiang
+ * Date: 2016-09-29
+ * Time: 10:32
+ * Description: 大图浏览
+ */
 @InjectContentView(R.layout.activity_photo_detail)
 public class PhotoDetailActivity extends BaseActivity
         implements UserPhotoDetailView, ViewPager.OnPageChangeListener {
@@ -68,4 +74,5 @@ public class PhotoDetailActivity extends BaseActivity
     public void onPageScrollStateChanged(int state) {
 
     }
+
 }

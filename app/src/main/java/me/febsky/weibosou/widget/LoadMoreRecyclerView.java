@@ -241,13 +241,21 @@ public class LoadMoreRecyclerView extends RecyclerView {
                     );
 
                     mFootView.setVisibility(VISIBLE);
+
+                    //如果FootView距离屏幕顶部的位置
+
+                    //
+//                    if (findLastCompletelyVisibleItemPositions() == adapter.getItemCount() - 1) {
+//                        loadingMoreEnabled = false;
+//                        mFootView.setVisibility(GONE);
+//                    }
                 }
                 return new SimpleViewHolder(mFootView);
             } else if (viewType == TYPE_HEADER) {
                 return new SimpleViewHolder(mHeadView);
             }
 
-            //一种点击事件的实现方式，以为有个头所以要减一
+            //一种点击事件的实现方式，有个头所以要减一
             final ViewHolder viewHolder = adapter.onCreateViewHolder(parent, viewType);
             if (mClickListener != null) {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

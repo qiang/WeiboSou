@@ -12,6 +12,7 @@ import android.widget.Toast;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.lang.reflect.InvocationHandler;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -160,6 +161,7 @@ public class GalleryPageFragment extends LazyBaseFragment
                 refreshLayout.autoRefresh(false);
             }
         }, 1);
+
     }
 
     //RecyclerView的Item点击事件

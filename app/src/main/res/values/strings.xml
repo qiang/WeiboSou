@@ -4,4 +4,9 @@
     <string name="bottom_tab_home_page">看图</string>
     <string name="bottom_tab_collection">收藏</string>
     <string name="bottom_tab_user">我</string>
+
+
+    <string name="splash_slogan">Go through the every bit of life</string>
+    <string name="splash_copyright">Copyright &#169; 2016 </string>
+    <string name="splash_version">V %1$s</string>
 </resources>

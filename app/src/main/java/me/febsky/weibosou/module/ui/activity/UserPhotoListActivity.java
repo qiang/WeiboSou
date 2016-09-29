@@ -145,6 +145,7 @@ public class UserPhotoListActivity extends BaseActivity
 
         if (loadType == DataLoadType.REFRESH_SUCCESS) {
             data.clear();
+            recyclerView.loadMoreComplete();
         }
         data.addAll(photoEntities);
         mAdapter.notifyDataSetChanged();
