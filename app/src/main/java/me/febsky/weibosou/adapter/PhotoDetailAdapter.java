@@ -1,6 +1,8 @@
 package me.febsky.weibosou.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Toast;
 
@@ -8,6 +10,11 @@ import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.List;
 
@@ -40,15 +47,7 @@ public class PhotoDetailAdapter extends BasePagerAdapter<UserPhotoEntity> implem
         DrawableRequestBuilder<String> thumbnailRequest = Glide
                 .with(mContext)
                 .load(smaillUrl);
-//
-//        Glide.with(mContext)
-//                .load(mData.get(position).getPic_big())
-////                .asBitmap()
-////                .placeholder(R.drawable.gray_placeholder)    //占位符
-////                .format(DecodeFormat.PREFER_ARGB_8888)
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .thumbnail(thumbnailRequest)
-//                .into(photoView);
+
         Glide.with(mContext)
                 .load(mData.get(position).getPic_big())
                 .asBitmap()
@@ -57,6 +56,10 @@ public class PhotoDetailAdapter extends BasePagerAdapter<UserPhotoEntity> implem
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .thumbnail(0.1f)
                 .into(photoView);
+//                .into();
+
+
+
         PhotoViewAttacher mAttacher = new PhotoViewAttacher(photoView);
         mAttacher.setOnViewTapListener(this);
         mAttacher.setOnLongClickListener(this);

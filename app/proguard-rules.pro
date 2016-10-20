@@ -186,3 +186,5 @@
 -dontwarn  com.google.common.util.concurrent.**
 
 -dontwarn  com.google.common.**
+
+-keep class com.bumptech.glide.integration.okhttp3.OkHttpGlideModule
