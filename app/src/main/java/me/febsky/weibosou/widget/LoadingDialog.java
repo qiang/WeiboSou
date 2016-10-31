@@ -59,12 +59,16 @@ public class LoadingDialog extends Dialog {
     @Override
     public void show() {
         super.show();
-        animDrawable.start();
+        if (animDrawable != null) {
+            animDrawable.start();
+        }
     }
 
     @Override
     public void dismiss() {
         super.dismiss();
-        animDrawable.stop();
+        if (animDrawable != null) {
+            animDrawable.stop();
+        }
     }
 }

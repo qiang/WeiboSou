@@ -9,4 +9,8 @@
     <string name="splash_slogan">Go through the every bit of life</string>
     <string name="splash_copyright">Copyright &#169; 2016 </string>
     <string name="splash_version">V %1$s</string>
+    <string name="text_go_back">返回</string>
+    <string name="text_sign_in">注册</string>
+    <string name="text_search_hint">输入要搜索的用户名</string>
+    <string name="text_title_my_collection">我的收藏</string>
 </resources>
