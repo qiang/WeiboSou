@@ -43,4 +43,8 @@
     <color name="gray_d3">#d3d3d3</color>
 
 
+    <!-- 文字的灰色 -->
+    <color name="color_text_black">#424242</color>
+    <color name="color_text_grey">#d6d6d6</color>
+
 </resources>

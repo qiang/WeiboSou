@@ -26,11 +26,11 @@
         <activity
             android:name=".module.ui.activity.SplashActivity"
             android:theme="@style/FullScreenTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity
             android:name=".module.ui.activity.MainActivity"
@@ -50,8 +50,14 @@
         <activity android:name=".module.TestActivity" />
         <activity android:name=".module.ui.activity.UserSearchActivity" />
         <activity android:name=".module.ui.activity.PhotoDetailActivity" />
-        <activity android:name=".module.ui.activity.LoginActivity" />
-        <activity android:name=".module.ui.activity.RegisterActivity"></activity>
+        <activity android:name=".module.ui.activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".module.ui.activity.RegisterActivity" />
     </application>
 
 </manifest>
