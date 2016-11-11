@@ -1,13 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_regist"
+    android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="me.febsky.weibosou.module.ui.activity.RegisterActivity">
+    android:orientation="vertical"
+    tools:context="me.febsky.weibosou.module.ui.activity.LoginActivity">
 
-</RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_common_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_title_bar_height"
+        android:background="@color/color_white">
+
+        <TextView
+            android:id="@+id/tv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:text="@string/text_go_back"
+            android:textColor="@color/app_main_color"
+            android:textSize="@dimen/title_bar_text_size" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/iv_user_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="70dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="@string/tips_input_phone_num"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:drawableRight="@drawable/icon_left_next_arrow"
+            android:gravity="center_vertical"
+            android:text="中国 +86 " />
+
+        <EditText
+            android:id="@+id/edit_text_username"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_login_username_input"
+            android:hint="@string/tips_login_phone_num"
+            android:imeOptions="actionNext"
+            android:inputType="number"
+            android:lines="1"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:textColor="@color/color_text_black_33"
+            android:textColorHint="@color/color_text_grey_d6"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/bg_login_btn_selector"
+            android:enabled="false"
+            android:gravity="center"
+            android:text="@string/text_sign_in"
+            android:textColor="@color/login_btn_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,6 +1,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="@color/white" android:state_enabled="false" />
-    <item android:color="@color/colorPrimary" android:state_enabled="true" android:state_pressed="true" />
-    <item android:color="@color/white" android:state_enabled="true" /> <!-- not selected -->
+    <item android:color="@color/color_white" android:state_enabled="false" />
+    <item android:color="@color/app_main_color" android:state_enabled="true" android:state_pressed="true" />
+    <item android:color="@color/color_white" android:state_enabled="true" /> <!-- not selected -->
 
 </selector>

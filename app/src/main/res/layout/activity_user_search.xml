@@ -9,7 +9,7 @@
         android:id="@+id/rl_common_title_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_title_bar_height"
-        android:background="@color/colorPrimary">
+        android:background="@color/color_white">
 
         <ImageView
             android:id="@+id/iv_back_btn"
@@ -32,8 +32,9 @@
             android:gravity="center_vertical|left"
             android:hint="@string/text_search_hint"
             android:inputType="text"
-            android:textColor="@color/white"
-            android:textColorHint="@color/font_hint_color"
+            android:textColor="@color/color_text_grey_d6"
+            android:textColorHint="@color/color_text_grey_d6"
+            android:textCursorDrawable="@drawable/color_cursor"
             android:textSize="14sp" />
 
         <ImageView

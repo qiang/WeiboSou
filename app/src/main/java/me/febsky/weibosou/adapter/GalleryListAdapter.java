@@ -33,8 +33,8 @@ import me.febsky.weibosou.utils.MeasureUtil;
 public class GalleryListAdapter extends BaseRecyclerViewAdapter<GalleryListAdapter.ViewHolder> {
 
     private final LayoutInflater mInflater;
-    private List<WeiBoUserEntity> userEntities;
     private Context mContext;
+    private List<WeiBoUserEntity> userEntities;
     private Random mRandom = new Random();
 
     public GalleryListAdapter(List<WeiBoUserEntity> userEntities, Context context) {

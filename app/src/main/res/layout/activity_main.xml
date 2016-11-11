@@ -10,41 +10,33 @@
         android:layout_height="0dip"
         android:layout_weight="1" />
 
-    <!--<com.adorable.news.view.MyViewPager-->
-    <!--android:id="@+id/layout_content"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="0dip"-->
-    <!--android:layout_weight="1" >-->
-    <!--</com.adorable.news.view.MyViewPager>-->
-
     <RadioGroup
         android:id="@+id/main_radio_group"
         android:layout_width="fill_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_gravity="bottom"
         android:background="@drawable/bg_bottom_tab"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingTop="4dp">
+        android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/rb_home"
             style="@style/main_tab_bottom"
             android:checked="true"
             android:drawableTop="@drawable/tab_selector_home"
-            android:text="@string/bottom_tab_home_page" />
+            android:text="@string/text_bottom_tab_home_page" />
 
         <RadioButton
             android:id="@+id/rb_collection"
             style="@style/main_tab_bottom"
             android:drawableTop="@drawable/tab_selector_collection"
-            android:text="@string/bottom_tab_collection" />
+            android:text="@string/text_bottom_tab_collection" />
 
         <RadioButton
             android:id="@+id/rb_user"
             style="@style/main_tab_bottom"
             android:drawableTop="@drawable/tab_selector_user"
-            android:text="@string/bottom_tab_user" />
+            android:text="@string/text_bottom_tab_user" />
 
     </RadioGroup>
 

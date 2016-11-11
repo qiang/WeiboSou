@@ -87,7 +87,7 @@ public class ThreePointLoadingView extends View {
             final TypedArray typedArray = context
                     .obtainStyledAttributes(attrs, R.styleable.ThreePointLoadingView);
             mBallPaint.setColor(typedArray.getColor(R.styleable.ThreePointLoadingView_pointColor,
-                    ContextCompat.getColor(context, R.color.colorPrimary)));
+                    ContextCompat.getColor(context, R.color.app_main_color)));
             typedArray.recycle();
         }
 

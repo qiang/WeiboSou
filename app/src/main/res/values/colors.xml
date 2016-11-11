@@ -2,49 +2,56 @@
 <resources>
 
     <color name="colorPrimary">#ff467d</color>
-    <color name="colorPrimaryDark">#ff467d</color>
-    <color name="colorAccent">#ffa5b8</color>
+    <color name="colorPrimaryDark">@color/color_black</color>
+    <color name="colorAccent">@color/colorPrimary</color>
 
+    <color name="cv_screen_name_color">#f46200</color>
+
+    <!--<color name="app_main_color">#ff3366</color>-->
+    <color name="app_main_color">#0e90e3</color>
+    <color name="color_black">@color/c_00</color>
+    <color name="color_white">@color/c_ff</color>
     <!-- drawable -->
-    <item name="transparent" type="drawable">#00000000</item>
+    <item name="drawable_transparent" type="drawable">#00000000</item>
+    <color name="color_transparent">#00000000</color>
 
-    <color name="transparent">#00000000</color>
-    <color name="white">#ffffffff</color>
-    <color name="white_ff">#ffffff</color>
-    <color name="alpha_10_white">#1AFFFFFF</color>
-    <color name="alpha_90_white">#E6FFFFFF</color>
-    <color name="material_black">#000</color>
-    <color name="gray_placeholder">#efefef</color>
-    <!-- 底部tab -->
-    <color name="bottom_tab_bg_color">#8f8f8f</color>
 
-    <!-- 头部tab -->
-    <color name="tab_indicator">#ffffff</color>
-    <color name="tab_background">#ffff467d</color>
-    <color name="tab_text">#ffa5b8</color>
-    <color name="tab_selected_text">#ffffff</color>
+    <!--主文字黑色-->
+    <color name="color_text_black_33">@color/c_33</color>
+    <!-- 二级标题文字的灰色 -->
+    <color name="color_text_grey_66">@color/c_66</color>
+    <!-- （）中文字的灰色 -->
+    <color name="color_text_grey_99">@color/c_99</color>
+    <!--文字提示颜色hit-->
+    <color name="color_text_grey_b3">@color/c_b3</color>
+    <color name="color_text_grey_d6">@color/c_d6</color>
+    <!-- 带有背景的字体颜色（显示在色块上的字的颜色） -->
+    <color name="color_text_white_fe">@color/c_fe</color>
+    <!--分割线颜色-->
+    <color name="color_divider_line_e5">@color/c_e5</color>
+    <!--activity 和fragment的背景颜色-->
+    <color name="color_act_bg">@color/c_f5</color>
+    <!--灰色button的描边-->
+    <color name="color_btn_stroke">@color/c_cc</color>
+    <color name="color_white_a90">#E6FFFFFF</color>
+
+    <!-- 项目中的颜色-->
+    <color name="c_00">#000000</color>
+    <color name="c_ff">#ffffff</color>
+    <color name="c_33">#333333</color>
+    <color name="c_66">#666666</color>
+    <color name="c_99">#999999</color>
+    <color name="c_b3">#b3b3b3</color>
+    <color name="c_e5">#e5e5e5</color>
+    <color name="c_f5">#f5f5f5</color>
+    <color name="c_cc">#cccccc</color>
+    <color name="c_fe">#fefefe</color>
+    <color name="c_d6">#d6d6d6</color>
+
 
     <!-- ptr 那个下拉刷新库用到的color -->
     <color name="ptr_red">#FFC93437</color>
     <color name="ptr_blue">#FF375BF1</color>
     <color name="ptr_yellow">#FFF7D23E</color>
     <color name="ptr_green">#FF34A350</color>
-
-
-    <!-- 一种近乎白色的灰 -->
-    <color name="home_fragment_bg_color">#ececec</color>
-    <color name="cv_screen_name_color">#f46200</color>
-    <color name="font_hint_color">#ececec</color>
-
-    <color name="gray_f2">#f2f2f2</color>
-    <color name="gray_aa">#aaaaaa</color>
-    <color name="gray_78">#787878</color>
-    <color name="gray_f4">#f4f4f4</color>
-    <color name="gray_d3">#d3d3d3</color>
-
-
-    <!-- 文字的灰色 -->
-    <color name="color_text_black">#424242</color>
-    <color name="color_text_grey">#d6d6d6</color>
-
 </resources>
