@@ -20,5 +20,6 @@
     <string name="tips_input_phone_num">请输入你手机号</string>
     <string name="text_login_right_now">立即登录</string>
     <string name="tips_benefit_after_login">登录后可以修改个人资料，享受收藏功能等</string>
+    <string name="text_title_user">个人中心</string>
 
 </resources>

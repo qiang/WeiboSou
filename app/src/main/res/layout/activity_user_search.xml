@@ -9,7 +9,7 @@
         android:id="@+id/rl_common_title_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_title_bar_height"
-        android:background="@color/color_white">
+        android:background="@drawable/bg_top_tab">
 
         <ImageView
             android:id="@+id/iv_back_btn"
@@ -26,15 +26,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
+            android:layout_marginBottom="15dp"
             android:layout_marginLeft="20dp"
             android:layout_toLeftOf="@+id/iv_search_btn"
             android:layout_toRightOf="@+id/iv_back_btn"
+            android:background="@drawable/bg_bottom_edit_text"
             android:gravity="center_vertical|left"
             android:hint="@string/text_search_hint"
             android:inputType="text"
             android:textColor="@color/color_text_grey_d6"
             android:textColorHint="@color/color_text_grey_d6"
-            android:textCursorDrawable="@drawable/color_cursor"
+            android:textCursorDrawable="@null"
             android:textSize="14sp" />
 
         <ImageView

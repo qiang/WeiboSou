@@ -4,15 +4,16 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_top_tab"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_white"
+        android:background="@drawable/bg_top_tab"
         app:tabIndicatorColor="@color/app_main_color"
-        app:tabIndicatorHeight="3dp"
+        app:tabIndicatorHeight="2dp"
         app:tabMode="scrollable"
         app:tabPaddingBottom="0dp"
         app:tabPaddingTop="0dp"
@@ -27,6 +28,7 @@
         android:layout_alignBottom="@+id/tab_layout"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/tab_layout"
+        android:background="?attr/selectableItemBackground"
         android:paddingLeft="10dp"
         android:paddingRight="20dp"
         android:src="@drawable/icon_search" />
