@@ -184,7 +184,7 @@ public class UserPhotoListActivity extends BaseActivity
     }
 
     @OnClick(R.id.iv_back_btn)
-    void backout() {
+    void backup() {
         finish();
     }
 }

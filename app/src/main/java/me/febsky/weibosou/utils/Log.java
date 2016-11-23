@@ -7,7 +7,7 @@ import me.febsky.weibosou.BuildConfig;
  * Author: liuqiang
  * Date: 2015-08-03
  * Time: 18:42
- * Description:
+ * Description: 这个类的存在主要是为了发版的时候自动的关掉Log
  */
 public class Log {
     private Log() {
@@ -100,14 +100,6 @@ public class Log {
     public static int e(String tag, String msg, Throwable tr) {
         if (BuildConfig.LOG_DEBUG) {
             return android.util.Log.e(tag, msg, tr);
-        }
-        return 0;
-    }
-
-    @SuppressWarnings("unused")
-    public static int t(String msg, Object... args) {
-        if (BuildConfig.LOG_DEBUG) {
-            return android.util.Log.v("test", String.format(msg, args));
         }
         return 0;
     }

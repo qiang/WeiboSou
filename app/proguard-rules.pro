@@ -187,4 +187,9 @@
 
 -dontwarn  com.google.common.**
 
+# okhttp
+-dontwarn okio.**
+-dontwarn com.squareup.okhttp.**
+-keep class com.squareup.okhttp.** { *; }
+-keep interface com.squareup.okhttp.** { *; }
 -keep class com.bumptech.glide.integration.okhttp3.OkHttpGlideModule
