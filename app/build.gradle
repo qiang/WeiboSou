@@ -140,4 +140,7 @@ dependencies {
     compile 'com.orhanobut:logger:1.15'
     //    compile files('libs/libammsdk.jar')
     //    compile files('libs/weiboSDKCore_3.1.2.jar')
+
+    // LeanCloud 基础包
+    compile ('cn.leancloud.android:avoscloud-sdk:v3.+')
 }

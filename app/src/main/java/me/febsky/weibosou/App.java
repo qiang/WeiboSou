@@ -2,6 +2,8 @@ package me.febsky.weibosou;
 
 import android.app.Application;
 
+import com.avos.avoscloud.AVOSCloud;
+
 import me.febsky.weibosou.common.PublicReference;
 import me.febsky.weibosou.utils.VolleyHelper;
 
@@ -19,6 +21,9 @@ public class App extends Application {
         super.onCreate();
         VolleyHelper.getInstance().init(this);
         reference = new PublicReference();
+
+        // 初始化参数依次为 this, AppId, AppKey
+        AVOSCloud.initialize(this, "lMPLwn22KKuxQbpbeah547Be-gzGzoHsz", "Wqo9CV4i8n5Mqs43puQRwrAv");
     }
 
 
