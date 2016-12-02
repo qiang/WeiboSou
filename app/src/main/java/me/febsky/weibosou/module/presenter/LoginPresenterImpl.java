@@ -10,7 +10,7 @@ import me.febsky.weibosou.module.view.LoginView;
  * Description:
  */
 public class LoginPresenterImpl extends BasePresenterImpl<LoginView, String> implements LoginPresenter {
-    ;
+
     private LoginInteractor<String> mInteractor;
 
     public LoginPresenterImpl(LoginView view) {
@@ -26,6 +26,6 @@ public class LoginPresenterImpl extends BasePresenterImpl<LoginView, String> imp
 
     @Override
     public void login(String userName, String pwd) {
-
+        mInteractor.requestLogin(this,userName,pwd);
     }
 }

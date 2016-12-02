@@ -117,6 +117,14 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    //编译libs中的aar包
+    fileTree(dir: 'libs', include: '**/*.aar')
+            .each { File file ->
+        dependencies.add("compile", [
+                name: file.name.lastIndexOf('.').with { it != -1 ? file.name[0..<it] : file.name },
+                ext : 'aar'
+        ])
+    }
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:design:23.2.1'
@@ -138,9 +146,10 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     compile 'com.orhanobut:logger:1.15'
-    //    compile files('libs/libammsdk.jar')
-    //    compile files('libs/weiboSDKCore_3.1.2.jar')
 
     // LeanCloud 基础包
-    compile ('cn.leancloud.android:avoscloud-sdk:v3.+')
+    compile('cn.leancloud.android:avoscloud-sdk:v3.+')
+    //一个步骤指示器第三方库
+    compile project(':stepview')
+
 }
