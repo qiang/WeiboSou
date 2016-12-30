@@ -34,3 +34,9 @@
 ## 目的
 
    主要为了练习使用MVP架构模式和自己封装BaseActivity作为以后项目的基本框架
+
+
+## 消除同个手机上的bugtag这个东西的影响
+    ./gradlew -p 你的app module名称 clean build
+
+    `./gradlew -p app clean build `
