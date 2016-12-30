@@ -85,17 +85,17 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        List<Fragment> fragmentList = fragmentManager.getFragments();
-        if (fragmentList != null) {
-            for (Fragment fragment : fragmentList) {
-                fragment.onActivityResult(requestCode, resultCode, data);
-            }
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        List<Fragment> fragmentList = fragmentManager.getFragments();
+//        if (fragmentList != null) {
+//            for (Fragment fragment : fragmentList) {
+//                fragment.onActivityResult(requestCode, resultCode, data);
+//            }
+//        }
+//    }
 
     @Override
     public void finish() {

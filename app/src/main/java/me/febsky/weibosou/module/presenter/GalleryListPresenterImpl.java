@@ -12,6 +12,7 @@ import me.febsky.weibosou.entity.WeiBoUserEntity;
 import me.febsky.weibosou.module.interactor.GalleryListInteractor;
 import me.febsky.weibosou.module.interactor.GalleryListInteractorImpl;
 import me.febsky.weibosou.module.view.GalleryListView;
+import me.febsky.weibosou.utils.Log;
 
 /**
  * Author: liuqiang
@@ -60,6 +61,8 @@ public class GalleryListPresenterImpl extends BasePresenterImpl<GalleryListView,
     public void requestSuccess(String data) {
         super.requestComplete();
         userEntityList.clear();
+
+        Log.d("Q_M:", data);
 
         WeiBoUserEntity userEntity;
 
