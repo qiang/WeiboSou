@@ -108,8 +108,8 @@ public class UserSearchActivity extends BaseActivity
     }
 
     @Override
-    public void hideProgress() {
-        super.hideProgress();
+    public void hideProgressDialog() {
+        super.hideProgressDialog();
         //如果下拉开着，关了，如果下拉开着关了
         mDialog.dismiss();
     }

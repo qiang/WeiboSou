@@ -7,9 +7,7 @@ package me.febsky.weibosou.module.view;
  */
 public interface LoginView extends BaseView {
 
+    void onLoginSuccess();
 
-    /**
-     * @param loginCode 登陆的返回结果码 成功失败或者其他
-     */
-    void updateView(int loginCode);
+    void onLoginFailed();
 }

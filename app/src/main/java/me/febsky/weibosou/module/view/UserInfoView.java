@@ -1,5 +1,7 @@
 package me.febsky.weibosou.module.view;
 
+import com.avos.avoscloud.AVUser;
+
 /**
  * Author: liuqiang
  * Date: 2017-01-03
@@ -9,4 +11,6 @@ package me.febsky.weibosou.module.view;
 public interface UserInfoView extends BaseView {
 
     void openLoginPage();
+
+    void updateViews(AVUser user);
 }

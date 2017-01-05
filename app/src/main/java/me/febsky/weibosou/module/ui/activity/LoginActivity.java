@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -53,7 +54,13 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
-    public void updateView(int loginCode) {
+    public void onLoginSuccess() {
+        setResult(RESULT_OK, null);
+        finish();
+    }
 
+    @Override
+    public void onLoginFailed() {
+        Toast.makeText(mContext, "用户名或密码错误", Toast.LENGTH_SHORT).show();
     }
 }

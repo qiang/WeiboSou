@@ -128,11 +128,11 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     }
 
     @Override
-    public void showProgress(String msg) {
+    public void showProgressDialog(String msg) {
     }
 
     @Override
-    public void hideProgress() {
+    public void hideProgressDialog() {
 
     }
 

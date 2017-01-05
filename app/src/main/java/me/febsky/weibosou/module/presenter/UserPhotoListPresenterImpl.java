@@ -58,7 +58,7 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
                 }
 
                 @Override
-                public void requestError(String msg) {
+                public void requestError(Exception msg) {
 
                 }
 

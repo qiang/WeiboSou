@@ -33,19 +33,19 @@ public abstract class BasePresenterImpl<V extends BaseView, M>
 
     @Override
     public void beforeRequest() {
-        mView.showProgress("");
+        mView.showProgressDialog("");
     }
 
 
     @Override
-    public void requestError(String msg) {
-        mView.showError(msg);
-        mView.hideProgress();
+    public void requestError(Exception e) {
+        mView.showError(e.toString());
+        mView.hideProgressDialog();
     }
 
     @Override
     public void requestComplete() {
-        mView.hideProgress();
+        mView.hideProgressDialog();
     }
 
     //搞成抽象类？ 请求成功方法必须实现？也行

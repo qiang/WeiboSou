@@ -193,3 +193,11 @@
 -keep class com.squareup.okhttp.** { *; }
 -keep interface com.squareup.okhttp.** { *; }
 -keep class com.bumptech.glide.integration.okhttp3.OkHttpGlideModule
+
+#fastjson
+-dontwarn com.alibaba.fastjson.**
+-keep class com.alibaba.fastjson.** { *;}
+
+#
+-dontwarn com.avos.avoscloud.okio.**
+-keep class com.avos.avoscloud.okio.** { *;}

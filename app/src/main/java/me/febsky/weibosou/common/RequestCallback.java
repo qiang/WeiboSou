@@ -17,9 +17,9 @@ public interface RequestCallback<T> {
     /**
      * 请求错误调用
      *
-     * @param msg 错误信息
+     * @param e 错误信息
      */
-    void requestError(String msg);
+    void requestError(Exception e);
 
     /**
      * 请求完成调用

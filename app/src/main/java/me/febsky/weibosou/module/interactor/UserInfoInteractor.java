@@ -1,5 +1,7 @@
 package me.febsky.weibosou.module.interactor;
 
+import com.avos.avoscloud.AVUser;
+
 /**
  * Author: liuqiang
  * Date: 2017-01-05
@@ -8,4 +10,6 @@ package me.febsky.weibosou.module.interactor;
  */
 public interface UserInfoInteractor {
     boolean isLogin();
+
+    AVUser getUser();
 }

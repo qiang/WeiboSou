@@ -29,15 +29,15 @@ public interface BaseView {
      *
      * @param msg
      */
-    void showProgress(String msg);
+    void showProgressDialog(String msg);
 
     /**
      * hide loading
      */
-    void hideProgress();
+    void hideProgressDialog();
 
     /**
-     * show error message  也就是toast
+     * show error message  Toast 或者其他方式
      */
     void showError(String msg);
 

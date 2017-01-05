@@ -15,4 +15,8 @@ public class UserInfoInteractorImpl implements UserInfoInteractor {
         AVUser user = AVUser.getCurrentUser();
         return user != null;
     }
+
+    public AVUser getUser() {
+        return AVUser.getCurrentUser();
+    }
 }

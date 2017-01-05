@@ -82,7 +82,7 @@ public class VolleyHelper {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        callback.requestError(error.toString());
+                        callback.requestError(error);
                         callback.requestComplete();
                     }
                 });
@@ -115,7 +115,7 @@ public class VolleyHelper {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        callback.requestError(error.toString());
+                        callback.requestError(error);
                         callback.requestComplete();
                     }
                 });

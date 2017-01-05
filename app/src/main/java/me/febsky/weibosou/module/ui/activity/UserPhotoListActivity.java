@@ -7,7 +7,6 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -171,8 +170,8 @@ public class UserPhotoListActivity extends BaseActivity
     }
 
     @Override
-    public void hideProgress() {
-        super.hideProgress();
+    public void hideProgressDialog() {
+        super.hideProgressDialog();
 
         //如果下拉开着，关了，如果下拉开着关了
         if (refreshLayout != null) {

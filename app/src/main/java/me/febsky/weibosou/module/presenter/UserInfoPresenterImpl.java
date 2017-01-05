@@ -31,6 +31,11 @@ public class UserInfoPresenterImpl extends BasePresenterImpl<UserInfoView, Strin
     }
 
     @Override
+    public void updateViews() {
+        mView.updateViews(mInteractor.getUser());
+    }
+
+    @Override
     public void requestSuccess(String data) {
 
     }

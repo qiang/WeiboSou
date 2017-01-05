@@ -2,6 +2,7 @@ package me.febsky.weibosou.module.interactor;
 
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.LogInCallback;
 import com.avos.avoscloud.SignUpCallback;
 
 import me.febsky.weibosou.common.Api;
@@ -19,12 +20,9 @@ public class LoginInteractorImpl implements LoginInteractor<String> {
 
 
     @Override
-    public void requestLogin(RequestCallback<String> callback, String userName, String pwd) {
-//        VolleyHelper.requestJsonString(
-//                Api.requestFid(uid, lcardid),
-//                callback);
+    public void requestLogin(final RequestCallback<String> callback, String userName, String pwd) {
 
-
+        //注册
 //        AVUser user = new AVUser();// 新建 AVUser 对象实例
 //        user.setUsername(userName);// 设置用户名
 //        user.setPassword(pwd);// 设置密码
@@ -37,9 +35,23 @@ public class LoginInteractorImpl implements LoginInteractor<String> {
 //
 //            }
 //        });
-        AVUser user = AVUser.getCurrentUser();
-        user.setEmail("niyingxunzong@163.com");
-        user.saveInBackground();
+
+        //修改
+//        AVUser user = AVUser.getCurrentUser();
+//        user.setEmail("niyingxunzong@163.com");
+//        user.saveInBackground();
+
+        //登陆
+        AVUser.logInInBackground(userName, pwd, new LogInCallback<AVUser>() {
+            @Override
+            public void done(AVUser avUser, AVException e) {
+                if (e == null) {
+                    callback.requestSuccess("");
+                } else {
+                    callback.requestError(e);
+                }
+            }
+        });
 
     }
 }

@@ -6,13 +6,11 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
-import android.widget.Toast;
 
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.lang.reflect.InvocationHandler;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +20,6 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
 import in.srain.cube.views.ptr.header.MaterialHeader;
 import me.febsky.weibosou.R;
-import me.febsky.weibosou.adapter.BaseRecyclerViewAdapter;
 import me.febsky.weibosou.adapter.GalleryListAdapter;
 import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.common.Const;
@@ -129,8 +126,8 @@ public class GalleryPageFragment extends LazyBaseFragment
     }
 
     @Override
-    public void hideProgress() {
-        super.hideProgress();
+    public void hideProgressDialog() {
+        super.hideProgressDialog();
 
         //如果下拉开着，关了，如果下拉开着关了
         if (refreshLayout != null) {

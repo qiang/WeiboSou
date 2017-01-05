@@ -20,12 +20,19 @@ public class LoginPresenterImpl extends BasePresenterImpl<LoginView, String> imp
 
     @Override
     public void requestSuccess(String data) {
-
+        mView.onLoginSuccess();
     }
 
 
     @Override
     public void login(String userName, String pwd) {
-        mInteractor.requestLogin(this,userName,pwd);
+        mInteractor.requestLogin(this, userName, pwd);
     }
+
+    @Override
+    public void requestError(Exception e) {
+        super.requestError(e);
+        mView.onLoginFailed();
+    }
+
 }

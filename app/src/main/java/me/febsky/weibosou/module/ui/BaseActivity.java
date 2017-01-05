@@ -26,6 +26,11 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
      */
     protected static String LOG_TAG = null;
 
+
+    public static int RESULT_OK = 1;
+    public static int RESULT_CANCEL = 0;
+    public static int RESULT_ERROR = -1;
+
     public Context mContext;
     public App mApplication;
     /**
@@ -121,12 +126,12 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     }
 
     @Override
-    public void showProgress(String msg) {
+    public void showProgressDialog(String msg) {
 
     }
 
     @Override
-    public void hideProgress() {
+    public void hideProgressDialog() {
 
     }
 

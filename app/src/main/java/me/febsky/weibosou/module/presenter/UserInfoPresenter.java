@@ -11,4 +11,6 @@ public interface UserInfoPresenter {
     void openLoginPage();
 
     boolean isLogin();
+
+    void updateViews();
 }
