@@ -31,7 +31,7 @@ import me.febsky.weibosou.module.presenter.GalleryListPresenterImpl;
 import me.febsky.weibosou.module.ui.LazyBaseFragment;
 import me.febsky.weibosou.module.ui.activity.UserPhotoListActivity;
 import me.febsky.weibosou.module.view.GalleryListView;
-import me.febsky.weibosou.utils.MeasureUtil;
+import me.febsky.weibosou.util.MeasureUtil;
 import me.febsky.weibosou.widget.LoadMoreRecyclerView;
 import me.febsky.weibosou.widget.SpacesItemDecoration;
 

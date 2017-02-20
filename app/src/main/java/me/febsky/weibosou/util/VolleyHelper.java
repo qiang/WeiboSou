@@ -1,4 +1,4 @@
-package me.febsky.weibosou.utils;
+package me.febsky.weibosou.util;
 
 import android.content.Context;
 
@@ -9,11 +9,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.reflect.TypeToken;
 
-import me.febsky.weibosou.common.Api;
 import me.febsky.weibosou.common.ApiResponse;
 import me.febsky.weibosou.common.GsonRequest;
 import me.febsky.weibosou.common.RequestCallback;
-import me.febsky.weibosou.entity.UserPhotoEntity;
 
 /**
  * Author:  liuqiang

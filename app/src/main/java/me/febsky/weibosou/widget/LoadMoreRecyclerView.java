@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import me.febsky.weibosou.utils.MeasureUtil;
+import me.febsky.weibosou.util.MeasureUtil;
 
 
 /**

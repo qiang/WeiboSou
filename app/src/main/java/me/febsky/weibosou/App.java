@@ -5,7 +5,7 @@ import android.app.Application;
 import com.avos.avoscloud.AVOSCloud;
 
 import me.febsky.weibosou.common.PublicReference;
-import me.febsky.weibosou.utils.VolleyHelper;
+import me.febsky.weibosou.util.VolleyHelper;
 
 /**
  * Author: liuqiang

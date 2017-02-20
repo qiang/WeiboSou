@@ -1,4 +1,4 @@
-package me.febsky.weibosou.utils;
+package me.febsky.weibosou.util;
 
 
 import me.febsky.weibosou.BuildConfig;

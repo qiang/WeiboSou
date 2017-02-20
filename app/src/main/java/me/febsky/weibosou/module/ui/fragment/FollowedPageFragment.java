@@ -3,7 +3,7 @@ package me.febsky.weibosou.module.ui.fragment;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.module.ui.LazyBaseFragment;
-import me.febsky.weibosou.utils.Log;
+import me.febsky.weibosou.util.Log;
 
 /**
  * Author: liuqiang

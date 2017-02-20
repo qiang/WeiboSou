@@ -19,8 +19,6 @@ import me.febsky.weibosou.module.ui.fragment.bottom.CollectionFragment;
 import me.febsky.weibosou.module.ui.fragment.bottom.HomeFragment;
 import me.febsky.weibosou.module.ui.fragment.bottom.UserInfoFragment;
 import me.febsky.weibosou.module.view.MainTabView;
-import me.febsky.weibosou.utils.ActivityUtil;
-import me.febsky.weibosou.utils.Log;
 
 /**
  * Author: liuqiang

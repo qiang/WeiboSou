@@ -15,7 +15,7 @@ import me.febsky.weibosou.entity.UserPhotoEntity;
 import me.febsky.weibosou.module.interactor.UserPhotoListInteractor;
 import me.febsky.weibosou.module.interactor.UserPhotoListInteractorImpl;
 import me.febsky.weibosou.module.view.UserPhotoListView;
-import me.febsky.weibosou.utils.Log;
+import me.febsky.weibosou.util.Log;
 
 /**
  * Author: liuqiang

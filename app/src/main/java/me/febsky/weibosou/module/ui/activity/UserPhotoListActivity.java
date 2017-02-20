@@ -29,8 +29,8 @@ import me.febsky.weibosou.module.presenter.UserPhotoListPresenter;
 import me.febsky.weibosou.module.presenter.UserPhotoListPresenterImpl;
 import me.febsky.weibosou.module.ui.BaseActivity;
 import me.febsky.weibosou.module.view.UserPhotoListView;
-import me.febsky.weibosou.utils.Log;
-import me.febsky.weibosou.utils.MeasureUtil;
+import me.febsky.weibosou.util.Log;
+import me.febsky.weibosou.util.MeasureUtil;
 import me.febsky.weibosou.widget.LoadMoreRecyclerView;
 import me.febsky.weibosou.widget.SpacesItemDecoration;
 

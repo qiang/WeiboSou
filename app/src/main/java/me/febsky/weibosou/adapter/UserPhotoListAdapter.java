@@ -19,7 +19,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.entity.UserPhotoEntity;
-import me.febsky.weibosou.utils.Log;
 
 /**
  * Author: liuqiang

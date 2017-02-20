@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import me.febsky.weibosou.R;
-import me.febsky.weibosou.utils.MeasureUtil;
+import me.febsky.weibosou.util.MeasureUtil;
 
 /**
  * Author: liuqiang

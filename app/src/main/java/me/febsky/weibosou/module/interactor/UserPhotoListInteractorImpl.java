@@ -2,7 +2,7 @@ package me.febsky.weibosou.module.interactor;
 
 import me.febsky.weibosou.common.Api;
 import me.febsky.weibosou.common.RequestCallback;
-import me.febsky.weibosou.utils.VolleyHelper;
+import me.febsky.weibosou.util.VolleyHelper;
 
 /**
  * Author: liuqiang

@@ -24,7 +24,7 @@ import me.febsky.weibosou.module.presenter.SearchPresenter;
 import me.febsky.weibosou.module.presenter.SearchPresenterImpl;
 import me.febsky.weibosou.module.ui.BaseActivity;
 import me.febsky.weibosou.module.view.SearchView;
-import me.febsky.weibosou.utils.MeasureUtil;
+import me.febsky.weibosou.util.MeasureUtil;
 import me.febsky.weibosou.widget.LoadMoreRecyclerView;
 import me.febsky.weibosou.widget.SpacesItemDecoration;
 

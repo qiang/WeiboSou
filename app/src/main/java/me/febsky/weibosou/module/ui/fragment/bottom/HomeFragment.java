@@ -2,7 +2,6 @@ package me.febsky.weibosou.module.ui.fragment.bottom;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,7 +9,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -25,10 +23,8 @@ import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.event.RefreshEvent;
 import me.febsky.weibosou.module.ui.BaseFragment;
 import me.febsky.weibosou.module.ui.activity.UserSearchActivity;
-import me.febsky.weibosou.module.ui.fragment.FollowedPageFragment;
 import me.febsky.weibosou.module.ui.fragment.GalleryPageFragment;
 import me.febsky.weibosou.module.ui.fragment.GirlsFragment;
-import me.febsky.weibosou.utils.Log;
 
 /**
  * Author: liuqiang
@@ -87,6 +83,7 @@ public class HomeFragment extends BaseFragment {
      */
     @Override
     public void onDestroyView() {
+
         super.onDestroyView();
         try {
             Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");

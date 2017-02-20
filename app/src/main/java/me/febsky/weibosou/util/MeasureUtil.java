@@ -1,4 +1,4 @@
-package me.febsky.weibosou.utils;
+package me.febsky.weibosou.util;
 
 import android.content.Context;
 import android.graphics.Point;

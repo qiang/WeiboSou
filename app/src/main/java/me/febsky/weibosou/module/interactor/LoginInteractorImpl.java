@@ -3,12 +3,8 @@ package me.febsky.weibosou.module.interactor;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
-import com.avos.avoscloud.SignUpCallback;
 
-import me.febsky.weibosou.common.Api;
 import me.febsky.weibosou.common.RequestCallback;
-import me.febsky.weibosou.module.presenter.LoginPresenter;
-import me.febsky.weibosou.utils.VolleyHelper;
 
 /**
  * Author: liuqiang

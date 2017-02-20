@@ -1,7 +1,6 @@
 package me.febsky.weibosou.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +21,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.entity.WeiBoUserEntity;
-import me.febsky.weibosou.utils.MeasureUtil;
+import me.febsky.weibosou.util.MeasureUtil;
 
 /**
  * Author: liuqiang

@@ -1,32 +1,9 @@
-package me.febsky.weibosou.utils;
+package me.febsky.weibosou.util;
 
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.view.HapticFeedbackConstants;
-import android.view.MotionEvent;
-import android.view.SoundEffectConstants;
 import android.view.TouchDelegate;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
-import android.webkit.WebView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 /**
  * Author: liuqiang

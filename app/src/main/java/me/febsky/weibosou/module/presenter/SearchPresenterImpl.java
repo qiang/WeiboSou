@@ -12,7 +12,7 @@ import me.febsky.weibosou.entity.WeiBoUserEntity;
 import me.febsky.weibosou.module.interactor.SearchInteractor;
 import me.febsky.weibosou.module.interactor.SearchInteractorImpl;
 import me.febsky.weibosou.module.view.SearchView;
-import me.febsky.weibosou.utils.Log;
+import me.febsky.weibosou.util.Log;
 
 /**
  * Author: liuqiang

@@ -12,7 +12,7 @@ import me.febsky.weibosou.entity.WeiBoUserEntity;
 import me.febsky.weibosou.module.interactor.GalleryListInteractor;
 import me.febsky.weibosou.module.interactor.GalleryListInteractorImpl;
 import me.febsky.weibosou.module.view.GalleryListView;
-import me.febsky.weibosou.utils.Log;
+import me.febsky.weibosou.util.Log;
 
 /**
  * Author: liuqiang
