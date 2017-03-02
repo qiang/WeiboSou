@@ -74,7 +74,17 @@ public class UserPhotoListPresenterImpl extends BasePresenterImpl<UserPhotoListV
                     try {
                         JSONObject jsonObject = new JSONObject(data);
 
-                        JSONObject albumJsonObj = jsonObject.getJSONObject("tabsInfo").getJSONArray("tabs").getJSONObject(2);
+                        JSONObject albumJsonObj = null;
+                        JSONArray tabs = jsonObject.getJSONObject("tabsInfo").getJSONArray("tabs");
+
+                        JSONObject obj;
+                        for (int i = 0; i < tabs.length(); i++) {
+                            obj = tabs.getJSONObject(i);
+                            if ("album".equals(obj.getString("tab_type"))) {
+                                albumJsonObj = obj;
+                                break;
+                            }
+                        }
 
                         fid = albumJsonObj.getString("containerid");
 

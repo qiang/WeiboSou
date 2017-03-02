@@ -16,7 +16,7 @@
 
     6. 加载网络图片glide
 
-    7. 大图预览 PhotoView
+    7. 大图预览 PhotoView``
 
     8. Log日志 [logger](https://github.com/orhanobut/logger)
 

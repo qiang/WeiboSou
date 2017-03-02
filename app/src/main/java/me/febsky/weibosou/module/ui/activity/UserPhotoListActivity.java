@@ -64,7 +64,7 @@ public class UserPhotoListActivity extends BaseActivity
         Intent requestIntent = getIntent();
         if (requestIntent != null) {
             userEntity = (WeiBoUserEntity) requestIntent.getSerializableExtra(Const.USER_ENTITY);
-            Log.d("Q_M:", "userEntity " + userEntity.toString());
+            Log.d("Q_M:"+LOG_TAG, "userEntity " + userEntity.toString());
             titleView.setText(userEntity.getScreen_name() + "的美图");
         }
 
