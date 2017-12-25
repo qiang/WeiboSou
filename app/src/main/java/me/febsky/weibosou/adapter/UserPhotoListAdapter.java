@@ -15,7 +15,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.entity.UserPhotoEntity;
@@ -51,7 +51,8 @@ public class UserPhotoListAdapter extends BaseRecyclerViewAdapter<UserPhotoListA
         Glide.with(mContext)
                 .load(userPhotoEntities.get(position).getPic_middle())
                 .asBitmap()
-                .placeholder(R.drawable.gray_placeholder)    //占位符
+//                .placeholder(R.drawable.gray_placeholder)    //占位符
+                .placeholder(R.drawable.icon_image_default_loading)    //占位符
 //                .error(R.drawable.icon_avatar_placeholder)
                 .format(DecodeFormat.PREFER_ARGB_8888)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -76,7 +77,7 @@ public class UserPhotoListAdapter extends BaseRecyclerViewAdapter<UserPhotoListA
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.iv_photo)
+        @BindView(R.id.iv_photo)
         ImageView photo;
 
         public ViewHolder(View view) {

@@ -96,7 +96,7 @@ public class SearchPresenterImpl extends BasePresenterImpl<SearchView, String>
             userEntity.setScreen_name(user.getString("screen_name"));
             userEntity.setAvatar_large(user.getString("avatar_large"));
             userEntity.setProfile_image_url(user.getString("profile_image_url"));
-            userEntity.setFollowers_count(user.getInt("followers_count"));
+//            userEntity.setFollowers_count(user.getInt("followers_count"));
             userEntity.setDesc1(card_group.getJSONObject(i).getString("desc1"));
             userEntity.setDesc2(card_group.getJSONObject(i).getString("desc2"));
             userEntity.setLcardid(card_group.getJSONObject(i).getString("itemid"));

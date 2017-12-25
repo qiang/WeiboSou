@@ -6,7 +6,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import me.febsky.weibosou.R;
@@ -21,11 +21,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     private LoginPresenter mPresenter;
 
-    @Bind(R.id.edit_text_username)
+    @BindView(R.id.edit_text_username)
     EditText userNameEt;
-    @Bind(R.id.edit_text_password)
+    @BindView(R.id.edit_text_password)
     EditText pwdEt;
-    @Bind(R.id.login_button)
+    @BindView(R.id.login_button)
     Button loginButton;
 
     @Override

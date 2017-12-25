@@ -51,13 +51,12 @@ public class PhotoDetailAdapter extends BasePagerAdapter<UserPhotoEntity> implem
         Glide.with(mContext)
                 .load(mData.get(position).getPic_big())
                 .asBitmap()
-//                .placeholder(R.drawable.gray_placeholder)    //占位符
+                .placeholder(R.drawable.icon_image_default_loading)    //占位符
                 .format(DecodeFormat.PREFER_ARGB_8888)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .thumbnail(0.1f)
                 .into(photoView);
 //                .into();
-
 
 
         PhotoViewAttacher mAttacher = new PhotoViewAttacher(photoView);

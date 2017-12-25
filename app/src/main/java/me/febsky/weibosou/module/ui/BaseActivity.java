@@ -86,7 +86,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     protected void onDestroy() {
         super.onDestroy();
         if (isBindButterKnife()) {
-            ButterKnife.unbind(this);
+//            ButterKnife.unbind(this);
         }
     }
 
@@ -127,7 +127,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     @Override
     public void showProgressDialog(String msg) {
-
     }
 
     @Override

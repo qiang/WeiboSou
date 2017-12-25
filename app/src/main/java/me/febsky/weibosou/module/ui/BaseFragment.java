@@ -109,14 +109,14 @@ public abstract class BaseFragment extends Fragment implements BaseView {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        ButterKnife.unbind(this);
+//        ButterKnife.unbind(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         if (isBindButterKnife()) {
-            ButterKnife.unbind(this);
+//            ButterKnife.unbind(this);
         }
         if (isBindEventBus()){
             EventBus.getDefault().unregister(this);

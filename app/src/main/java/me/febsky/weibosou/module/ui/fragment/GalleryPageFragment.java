@@ -14,7 +14,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
@@ -46,9 +46,9 @@ import me.febsky.weibosou.widget.SpacesItemDecoration;
 public class GalleryPageFragment extends LazyBaseFragment
         implements GalleryListView, LoadMoreRecyclerView.OnLoadMoreListener, PtrHandler, LoadMoreRecyclerView.OnItemClickListener {
 
-    @Bind(R.id.refresh_layout)
+    @BindView(R.id.refresh_layout)
     PtrFrameLayout refreshLayout;
-    @Bind(R.id.recycler_view)
+    @BindView(R.id.recycler_view)
     LoadMoreRecyclerView recyclerView;
 
     private GalleryListPresenter mPresenter;

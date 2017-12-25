@@ -15,7 +15,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.List;
 import java.util.Random;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.entity.WeiBoUserEntity;
@@ -69,13 +69,13 @@ public class UserSearchResultAdapter extends BaseRecyclerViewAdapter<UserSearchR
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.iv_user_avatar)
+        @BindView(R.id.iv_user_avatar)
         ImageView photoSummary;
-        @Bind(R.id.tv_screen_name)
+        @BindView(R.id.tv_screen_name)
         TextView screenName;
-        @Bind(R.id.tv_desc1)
+        @BindView(R.id.tv_desc1)
         TextView desc1;
-        @Bind(R.id.tv_desc2)
+        @BindView(R.id.tv_desc2)
         TextView desc2;
 
         public ViewHolder(View view) {

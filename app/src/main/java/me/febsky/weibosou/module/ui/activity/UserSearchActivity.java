@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.adapter.UserSearchResultAdapter;
@@ -35,9 +35,9 @@ public class UserSearchActivity extends BaseActivity
         LoadMoreRecyclerView.OnItemClickListener {
 
 
-    @Bind(R.id.tv_search_input)
+    @BindView(R.id.tv_search_input)
     EditText inputText;
-    @Bind(R.id.load_more_recycler_view)
+    @BindView(R.id.load_more_recycler_view)
     LoadMoreRecyclerView recyclerView;
 
     private SearchPresenter mPresenter;

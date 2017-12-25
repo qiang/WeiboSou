@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.adapter.PhotoDetailAdapter;
 import me.febsky.weibosou.annotation.InjectContentView;
@@ -26,11 +26,11 @@ import me.febsky.weibosou.widget.ThreePointLoadingView;
 public class PhotoDetailActivity extends BaseActivity
         implements UserPhotoDetailView, ViewPager.OnPageChangeListener {
 
-    @Bind(R.id.loading_view)
+    @BindView(R.id.loading_view)
     ThreePointLoadingView mLoadingView;
-    @Bind(R.id.view_pager)
+    @BindView(R.id.view_pager)
     ViewPager mViewPager;
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView titleView;
 
     private int currentPosition = 0;

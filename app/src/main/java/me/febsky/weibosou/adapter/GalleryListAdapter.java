@@ -17,7 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.List;
 import java.util.Random;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.entity.WeiBoUserEntity;
@@ -95,11 +95,11 @@ public class GalleryListAdapter extends BaseRecyclerViewAdapter<GalleryListAdapt
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.iv_photo_summary)
+        @BindView(R.id.iv_photo_summary)
         ImageView photoSummary;
-        @Bind(R.id.tv_screen_name)
+        @BindView(R.id.tv_screen_name)
         TextView screenName;
-        @Bind(R.id.tv_desc)
+        @BindView(R.id.tv_desc)
         TextView desc;
 
         public ViewHolder(View view) {

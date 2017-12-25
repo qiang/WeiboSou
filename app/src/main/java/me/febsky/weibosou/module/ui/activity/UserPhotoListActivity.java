@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
@@ -44,11 +44,11 @@ import me.febsky.weibosou.widget.SpacesItemDecoration;
 public class UserPhotoListActivity extends BaseActivity
         implements UserPhotoListView, PtrHandler, LoadMoreRecyclerView.OnLoadMoreListener, LoadMoreRecyclerView.OnItemClickListener {
 
-    @Bind(R.id.refresh_layout)
+    @BindView(R.id.refresh_layout)
     PtrFrameLayout refreshLayout;
-    @Bind(R.id.recycler_view)
+    @BindView(R.id.recycler_view)
     LoadMoreRecyclerView recyclerView;
-    @Bind(R.id.tv_title)
+    @BindView(R.id.tv_title)
     TextView titleView;
 
 
@@ -65,7 +65,7 @@ public class UserPhotoListActivity extends BaseActivity
         if (requestIntent != null) {
             userEntity = (WeiBoUserEntity) requestIntent.getSerializableExtra(Const.USER_ENTITY);
             Log.d("Q_M:"+LOG_TAG, "userEntity " + userEntity.toString());
-            titleView.setText(userEntity.getScreen_name() + "的美图");
+            titleView.setText(userEntity.getScreen_name() + "的相册");
         }
 
         mPresenter = new UserPhotoListPresenterImpl(this);

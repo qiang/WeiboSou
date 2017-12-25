@@ -44,8 +44,8 @@
 -keep public class * extends android.support.v4.**    #
 -keep interface android.support.v4.app.** { *; }    #
 -keep class android.support.v4.** { *; }        #
--keep class android.os.**{*;}
 
+-keep class android.os.**{*;}
 -keep class **.R$* { *; }
 -keep class **.R{ *; }
 

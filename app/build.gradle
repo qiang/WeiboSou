@@ -1,20 +1,25 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
 
     /**
      * 设置一些默认属性，其可用属性是buildTypes和ProductFlavors之和
      */
     defaultConfig {
         applicationId "me.febsky.weibosou"
-        minSdkVersion 16
-        targetSdkVersion 23
+        minSdkVersion Integer.parseInt(project.ANDROID_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(project.ANDROID_TARGET_SDK_VERSION)
         versionCode 101
         versionName "1.0.1"
         // dex突破65535的限制
         multiDexEnabled true
+
+        flavorDimensions "dimension"//, "release"
+
+        // 声明需要使用注解功能
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
 
     }
 
@@ -58,18 +63,36 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
 
+
+
             applicationVariants.all { variant ->
-                variant.outputs.each { output ->
-                    def outputFile = output.outputFile
+                variant.outputs.all { output ->
+                    /*def outputFile = output.outputFile
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
                         // 输出apk名称为Release_V1.0_wandoujia.apk
                         def fileName = "Release_V_${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
                         output.outputFile = new File(outputFile.parent, fileName)
-                    }
+                    }*/
+
+                    outputFileName = "weibosou_${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+
                 }
             }
         }
     }
+
+    configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion "${project.ANDROID_SUPPORT_VERSION}"
+                }
+            }
+        }
+    }
+
+
 
     /**
      * 多渠道
@@ -81,8 +104,10 @@ android {
          */
 
         febsky {
+            dimension "dimension"
             manifestPlaceholders = [CHANNEL_NAME: "fesky"]
         }
+
     }
 
     //Java的配置
@@ -126,30 +151,40 @@ dependencies {
         ])
     }
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:design:23.2.1'
-    compile 'com.android.support:support-v13:23.0.0'
-    compile 'com.android.support:cardview-v7:23.2.1'
-    compile 'com.android.support:support-v4:23.1.0'
-    compile 'com.github.satyan:sugar:1.4'
+
+/*    compile 'com.android.support:appcompat-v7:27.0.2'
+    compile 'com.android.support:design:27.0.2'
+    compile 'com.android.support:support-v13:27.0.2'
+    compile 'com.android.support:cardview-v7:27.0.2'
+    compile 'com.android.support:support-v4:27.0.2'*/
+
+    compile "com.android.support:appcompat-v7:${rootProject.ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:design:${rootProject.ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:support-v13:${rootProject.ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:cardview-v7:${rootProject.ANDROID_SUPPORT_VERSION}"
+    compile "com.android.support:support-v4:${rootProject.ANDROID_SUPPORT_VERSION}"
+
+
+    compile 'com.github.satyan:sugar:1.5'
     compile 'com.mcxiaoke.volley:library:1.0.19'
-    compile 'com.google.code.gson:gson:2.4'
-    compile 'com.orhanobut:logger:1.3'
+    compile 'com.google.code.gson:gson:2.8.1'
     compile 'in.srain.cube:ultra-ptr:1.0.11'
     compile('com.makeramen:roundedimageview:2.1.2') {
+        //Transitive用于自动处理子依赖项。默认为true，gradle自动添加子依赖项，形成一个多层树形结构；设置为false，则需要手动添加每个依赖项。
         transitive = true
     }
     compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.chrisbanes:PhotoView:1.3.0'
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
     compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
     compile 'com.orhanobut:logger:1.15'
 
     // LeanCloud 基础包
     compile('cn.leancloud.android:avoscloud-sdk:v3.+')
     //一个步骤指示器第三方库
-    compile project(':stepview')
+//    compile project(':stepview')
 
 }

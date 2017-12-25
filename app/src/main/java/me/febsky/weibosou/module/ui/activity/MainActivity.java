@@ -8,7 +8,7 @@ import android.widget.RadioGroup;
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.annotation.InjectContentView;
 import me.febsky.weibosou.module.presenter.MainTabPresenter;
@@ -34,7 +34,7 @@ public class MainActivity extends BaseActivity implements MainTabView, RadioGrou
     private BaseFragment currentFragment;
     private FragmentManager fragmentManager;
 
-    @Bind(R.id.main_radio_group)
+    @BindView(R.id.main_radio_group)
     RadioGroup radioGroup;
 
     @Override

@@ -16,7 +16,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.OnClick;
 import me.febsky.weibosou.R;
 import me.febsky.weibosou.annotation.InjectContentView;
@@ -38,9 +38,9 @@ public class HomeFragment extends BaseFragment {
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
 
-    @Bind(R.id.tab_layout)
+    @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
-    @Bind(R.id.view_pager)
+    @BindView(R.id.view_pager)
     ViewPager mViewPager;
 
     @Override
