@@ -43,7 +43,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
 
     private boolean mUseAnimation = true;   //Item的加载动画，不是原生的RecyclerView 带的是自定义的
 
-    private final RecyclerView.AdapterDataObserver mDataObserver = new DataObserver();
+    private final AdapterDataObserver mDataObserver = new DataObserver();
 
     public LoadMoreRecyclerView(Context context) {
         this(context, null);
@@ -62,7 +62,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
         mInflater = LayoutInflater.from(context);
         LinearLayout linearLayout = new LinearLayout(context);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
-        RecyclerView.LayoutParams rl = new RecyclerView.LayoutParams(
+        LayoutParams rl = new LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         linearLayout.setLayoutParams(rl);
         linearLayout.setGravity(Gravity.CENTER);
@@ -126,32 +126,8 @@ public class LoadMoreRecyclerView extends RecyclerView {
         mDataObserver.onChanged();
     }
 
-    public void setFootView(final View view) {
-        mFootView.removeAllViews();
-        mFootView.addView(view);
-    }
 
-    public void loadMoreComplete() {
-        isLoadingData = false;
-        mFootView.setVisibility(View.GONE);
-    }
-
-    public void setLoadingMoreEnabled(boolean loadingMoreEnabled) {
-        this.loadingMoreEnabled = loadingMoreEnabled;
-    }
-
-    public void setOnLoadMoreListener(OnLoadMoreListener loadMoreListener) {
-        mLoadMoreListener = loadMoreListener;
-    }
-
-    private OnLoadMoreListener mLoadMoreListener;
-
-    public interface OnLoadMoreListener {
-        void loadMore();
-    }
-
-
-    private class DataObserver extends RecyclerView.AdapterDataObserver {
+    private class DataObserver extends AdapterDataObserver {
         @Override
         public void onChanged() {
             if (mWrapAdapter != null) {
@@ -191,11 +167,11 @@ public class LoadMoreRecyclerView extends RecyclerView {
      * Time: 16:34
      * Description: 为上拉加载更多准备的
      */
-    public class WrapAdapter extends RecyclerView.Adapter<ViewHolder> {
+    public class WrapAdapter extends Adapter<ViewHolder> {
 
-        private RecyclerView.Adapter<ViewHolder> adapter;
+        private Adapter<ViewHolder> adapter;
 
-        public WrapAdapter(RecyclerView.Adapter adapter) {
+        public WrapAdapter(Adapter adapter) {
             this.adapter = adapter;
         }
 
@@ -258,7 +234,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
             //一种点击事件的实现方式，有个头所以要减一
             final ViewHolder viewHolder = adapter.onCreateViewHolder(parent, viewType);
             if (mClickListener != null) {
-                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                viewHolder.itemView.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mClickListener.onItemClick(v, viewHolder.getLayoutPosition() - 1);
@@ -273,6 +249,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
 
             if (isFooter(position)) {
                 mFootView.setVisibility(VISIBLE);
+                if (!isLoadingData) mFootView.setVisibility(GONE);
             } else if (isHeader(position)) {
 
             } else {
@@ -315,7 +292,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
         @Override
         public void onAttachedToRecyclerView(RecyclerView recyclerView) {
             super.onAttachedToRecyclerView(recyclerView);
-            RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
+            LayoutManager manager = recyclerView.getLayoutManager();
             if (manager instanceof GridLayoutManager) {
                 final GridLayoutManager gridManager = ((GridLayoutManager) manager);
                 gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -335,7 +312,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
         }
 
         @Override
-        public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
+        public void onViewAttachedToWindow(ViewHolder holder) {
             super.onViewAttachedToWindow(holder);
             ViewGroup.LayoutParams lp = holder.itemView.getLayoutParams();
             if (lp != null
@@ -349,7 +326,7 @@ public class LoadMoreRecyclerView extends RecyclerView {
 
 
         @Override
-        public void onViewDetachedFromWindow(RecyclerView.ViewHolder holder) {
+        public void onViewDetachedFromWindow(ViewHolder holder) {
             adapter.onViewDetachedFromWindow(holder);
             if (mUseAnimation && holder.itemView.getAnimation() != null && holder.itemView
                     .getAnimation().hasStarted()) {
@@ -358,12 +335,12 @@ public class LoadMoreRecyclerView extends RecyclerView {
         }
 
         @Override
-        public void onViewRecycled(RecyclerView.ViewHolder holder) {
+        public void onViewRecycled(ViewHolder holder) {
             adapter.onViewRecycled(holder);
         }
 
         @Override
-        public boolean onFailedToRecycleView(RecyclerView.ViewHolder holder) {
+        public boolean onFailedToRecycleView(ViewHolder holder) {
             return adapter.onFailedToRecycleView(holder);
         }
 
@@ -378,11 +355,35 @@ public class LoadMoreRecyclerView extends RecyclerView {
         }
 
 
-        private class SimpleViewHolder extends RecyclerView.ViewHolder {
+        private class SimpleViewHolder extends ViewHolder {
             public SimpleViewHolder(View itemView) {
                 super(itemView);
             }
         }
+    }
+
+
+    public void setFootView(final View view) {
+        mFootView.removeAllViews();
+        mFootView.addView(view);
+    }
+
+    public void loadMoreComplete() {
+        isLoadingData = false;
+    }
+
+    public void setLoadingMoreEnabled(boolean loadingMoreEnabled) {
+        this.loadingMoreEnabled = loadingMoreEnabled;
+    }
+
+    public void setOnLoadMoreListener(OnLoadMoreListener loadMoreListener) {
+        mLoadMoreListener = loadMoreListener;
+    }
+
+    private OnLoadMoreListener mLoadMoreListener;
+
+    public interface OnLoadMoreListener {
+        void loadMore();
     }
 
 
