@@ -20,7 +20,7 @@
 
     8. Log日志 [logger](https://github.com/orhanobut/logger)
 
-    9. ORM sugar,ActiveAndroid,realm???
+    9. ORM ~~sugar~~,~~ActiveAndroid~~,[realm](https://realm.io/docs/java/latest/),[ORMLite](http://blog.csdn.net/lmj623565791/article/details/39121377)
 
     10. 参考XRecyclerView的源码
 

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion Integer.parseInt(rootProject.ANDROID_BUILD_SDK_VERSION)
-    buildToolsVersion rootProject.ANDROID_BUILD_TOOLS_VERSION
+    buildToolsVersion '28.0.2'
 
     /**
      * 设置一些默认属性，其可用属性是buildTypes和ProductFlavors之和
@@ -132,7 +132,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     //编译libs中的aar包
     fileTree(dir: 'libs', include: '**/*.aar')
             .each { File file ->
@@ -141,34 +141,34 @@ dependencies {
                 ext : 'aar'
         ])
     }
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
 
-    compile "com.android.support:appcompat-v7:${rootProject.ANDROID_SUPPORT_VERSION}"
-    compile "com.android.support:design:${rootProject.ANDROID_SUPPORT_VERSION}"
-    compile "com.android.support:support-v13:${rootProject.ANDROID_SUPPORT_VERSION}"
-    compile "com.android.support:cardview-v7:${rootProject.ANDROID_SUPPORT_VERSION}"
-    compile "com.android.support:support-v4:${rootProject.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:appcompat-v7:${rootProject.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:design:${rootProject.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:support-v13:${rootProject.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:cardview-v7:${rootProject.ANDROID_SUPPORT_VERSION}"
+    implementation "com.android.support:support-v4:${rootProject.ANDROID_SUPPORT_VERSION}"
 
 
-    compile 'com.github.satyan:sugar:1.5'
-    compile 'com.mcxiaoke.volley:library:1.0.19'
-    compile 'com.google.code.gson:gson:2.8.1'
-    compile 'in.srain.cube:ultra-ptr:1.0.11'
-    compile('com.makeramen:roundedimageview:2.1.2') {
+    implementation 'com.github.satyan:sugar:1.5'
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
+    implementation 'com.google.code.gson:gson:2.8.1'
+    implementation 'in.srain.cube:ultra-ptr:1.0.11'
+    implementation('com.makeramen:roundedimageview:2.1.2') {
         //Transitive用于自动处理子依赖项。默认为true，gradle自动添加子依赖项，形成一个多层树形结构；设置为false，则需要手动添加每个依赖项。
         transitive = true
     }
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.jakewharton:butterknife:8.8.1'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.github.chrisbanes:PhotoView:1.3.0'
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
-    compile 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
-    compile 'com.orhanobut:logger:1.15'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.github.chrisbanes:PhotoView:1.3.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    implementation 'com.github.bumptech.glide:okhttp3-integration:1.4.0@aar'
+    implementation 'com.orhanobut:logger:1.15'
 
     // LeanCloud 基础包
-    compile('cn.leancloud.android:avoscloud-sdk:v3.+')
+    implementation('cn.leancloud.android:avoscloud-sdk:v3.+')
     //一个步骤指示器第三方库
 //    compile project(':stepview')
 
