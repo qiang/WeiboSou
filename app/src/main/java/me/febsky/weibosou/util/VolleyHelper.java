@@ -19,6 +19,7 @@ import me.febsky.weibosou.common.RequestCallback;
  * Description: 简化volley操作
  * 本来感觉volley是比较小巧的一个库，后来感觉不太好用
  * 还不如我之前用自己封装的okhttp呢，
+ * 2020 //
  */
 public class VolleyHelper {
 
@@ -42,10 +43,12 @@ public class VolleyHelper {
 
     /**
      * init volley helper
-     *
+     *   https://developer.android.google.cn/training/volley/requestqueue#network
      * @param context
      */
     public void init(Context context) {
+        //传入context 主要为了处理cache  的文件目录
+        //主线程和子线程切换用的是 Looper.mainLooper();
         requestQueue = Volley.newRequestQueue(context);
     }
 
