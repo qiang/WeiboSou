@@ -9,6 +9,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
+
 import me.febsky.weibosou.common.ApiResponse;
 import me.febsky.weibosou.common.GsonRequest;
 import me.febsky.weibosou.common.RequestCallback;
@@ -43,7 +45,8 @@ public class VolleyHelper {
 
     /**
      * init volley helper
-     *   https://developer.android.google.cn/training/volley/requestqueue#network
+     * https://developer.android.google.cn/training/volley/requestqueue#network
+     *
      * @param context
      */
     public void init(Context context) {
@@ -95,20 +98,17 @@ public class VolleyHelper {
     /**
      * 我的设计的理想化的volley请求，未测试能不能用
      *
-     * @param tClass
      * @param url
      * @param callback
-     * @param <T>
+     * @param <D>      split 之后的数据
      */
-    public static <T> void requestJsonBean(Class<T> tClass, String url, final RequestCallback<T> callback) {
+    public static <D> void requestGsonBean(String url, Type type, final RequestCallback<D> callback) {
 
-        GsonRequest<ApiResponse<T>> gsonRequest = new GsonRequest<>(
-                url, null,
-                new TypeToken<ApiResponse<T>>() {
-                }.getType(),
-                new Response.Listener<ApiResponse<T>>() {
+        GsonRequest<ApiResponse<D>> gsonRequest = new GsonRequest<ApiResponse<D>>(
+                url, null, type,
+                new Response.Listener<ApiResponse<D>>() {
                     @Override
-                    public void onResponse(ApiResponse<T> response) {
+                    public void onResponse(ApiResponse<D> response) {
                         callback.requestSuccess(response.getData());
                         callback.requestComplete();
                     }

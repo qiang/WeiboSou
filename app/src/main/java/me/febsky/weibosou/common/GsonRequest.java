@@ -11,8 +11,10 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
@@ -38,16 +40,15 @@ public class GsonRequest<T> extends Request<T> {
 
     private final Listener<T> mListener;
     private final String mRequestBody;
-    private Type mType = null;
-    private Gson mGson = null;
+    private Gson mGson;
+    private Type mType;
 
     public GsonRequest(int method, String url, String requestBody, Type type, Listener<T> listener,
                        ErrorListener errorListener) {
         super(method, url, errorListener);
-        mType = type;
         mListener = listener;
         mRequestBody = requestBody;
-
+        this.mType = type;
         mGson = new Gson();
     }
 
@@ -67,13 +68,17 @@ public class GsonRequest<T> extends Request<T> {
         try {
             String jsonString = new String(response.data,
                     HttpHeaderParser.parseCharset(response.headers));
+
+            //这样就不用强转了
+            T result = mGson.fromJson(jsonString, mType);
+
             return Response.success(
-                    (T) mGson.fromJson(jsonString, mType),
+                    result,
                     HttpHeaderParser.parseCacheHeaders(response)
             );
         } catch (UnsupportedEncodingException e) {
             return Response.error(new VolleyError(e));
-        }catch (JsonSyntaxException e) {
+        } catch (JsonSyntaxException e) {
             return Response.error(new ParseError(e));
         }
     }
